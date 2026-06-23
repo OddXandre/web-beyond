@@ -40,20 +40,7 @@
     gsap.set(['.nav', '.intro-heading .line-inner', '.intro-sub', '.intro-actions .btn'], { clearProps: 'all' });
   }
 
-  /* ─── WORKFLOW CARDS ─── */
-  if (!reduceMotion) {
-    gsap.from('.workflow-card', {
-      scrollTrigger: {
-        trigger: '.workflow-horizontal',
-        start: 'top 82%',
-      },
-      y: 36,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: EASE,
-    });
-  }
+  /* ─── WORKFLOW CARDS (sin animación de entrada) ─── */
 
   /* ─── FOOTER ─── */
   if (!reduceMotion) {

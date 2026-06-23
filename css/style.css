@@ -854,14 +854,14 @@ a.btn {
   .workflow-horizontal {
     flex-direction: column;
     padding: 48px 16px 0;
-    gap: 12px;
+    gap: 16px;
     align-items: stretch;
   }
   .workflow-card {
     max-width: none;
     width: 100%;
-    padding: 20px 22px;
-    gap: 8px;
+    padding: 24px;
+    gap: 12px;
     text-align: center;
     align-items: center;
   }
