@@ -40,33 +40,11 @@
       opacity: 0,
       duration: 0.5,
       stagger: 0.08,
+      clearProps: 'transform',
     }, '-=0.3');
   } else {
     // Sin animación: dejamos todo visible
     gsap.set(['.nav', '.intro-eyebrow', '.intro-heading .line-inner', '.intro-sub', '.intro-actions .btn'], { clearProps: 'all' });
-  }
-
-  /* ─── MARQUEE (bucle infinito) ─── */
-  var track = document.getElementById('marqueeTrack');
-  if (track && track.children.length > 0) {
-    if (!reduceMotion) {
-      var speed = window.innerWidth < 768 ? 22 : 28;
-      var marqueeTl = gsap.timeline({ repeat: -1 });
-      marqueeTl.to(track, {
-        x: function () { return -(track.scrollWidth / 2); },
-        duration: function () { return Math.max(speed, track.scrollWidth / 130); },
-        ease: 'none',
-      });
-
-      // Recalcular al redimensionar
-      var resizeTimer;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          marqueeTl.invalidate();
-        }, 200);
-      });
-    }
   }
 
   /* ─── WORKFLOW CARDS ─── */

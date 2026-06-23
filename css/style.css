@@ -153,7 +153,7 @@ img {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 102;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -165,7 +165,8 @@ img {
   border-radius: 30px;
   box-shadow: var(--shadow-nav);
   max-width: calc(100% - 32px);
-  width: fit-content;
+  width: auto;
+  overflow: hidden;
   transition: background-color 0.35s var(--ease-soft),
               border-color 0.35s var(--ease-soft);
 }
@@ -290,42 +291,25 @@ img {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.4px;
-  line-height: 18px;
+  line-height: 1;
   border: none;
   cursor: pointer;
   white-space: nowrap;
-  height: 40px;
-  position: relative;
-  overflow: hidden;
+  min-height: 40px;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   transition: transform 0.2s var(--ease-out), background-color 0.35s var(--ease-soft),
               color 0.35s var(--ease-soft);
 }
 
+/* Asegura que el botón entero sea la zona de click, incluso como <a> */
+a.btn {
+  text-decoration: none;
+}
+
 .btn:active {
   transform: scale(0.97);
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.16) 50%,
-    transparent 100%
-  );
-  transform: translateX(-100%);
-  pointer-events: none;
-}
-
-.btn:hover::before {
-  animation: btnShine 0.6s var(--ease-out) forwards;
-}
-
-@keyframes btnShine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
 }
 
 .btn-dark {
@@ -333,18 +317,17 @@ img {
   color: var(--color-on-accent);
 }
 
+.btn-dark:hover {
+  filter: brightness(1.2);
+}
+
 .btn-light {
   background: var(--color-surface);
   color: var(--color-text);
 }
 
-.btn-light::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-border-strong) 50%,
-    transparent 100%
-  );
+.btn-light:hover {
+  filter: brightness(0.93);
 }
 
 /* ─── INTRO / HERO ─── */
@@ -441,6 +424,18 @@ img {
   gap: 14px;
   width: max-content;
   will-change: transform;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 22s;
+  }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .marquee-item {
@@ -533,6 +528,7 @@ img {
 }
 
 .workflow-card p {
+  flex: 1;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.01em;
@@ -594,17 +590,8 @@ img {
   transition: background-size 0.4s var(--ease-out);
 }
 
-.footer-email-arrow {
-  display: inline-block;
-  transition: transform 0.4s var(--ease-out);
-}
-
 .footer-email:hover .footer-email-text {
   background-size: 100% 1.5px;
-}
-
-.footer-email:hover .footer-email-arrow {
-  transform: translateX(6px);
 }
 
 .footer-location {
@@ -655,14 +642,17 @@ img {
   transition: border-color 0.35s var(--ease-soft);
 }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
+/* ─── RESPONSIVE NAV ───
+   Estrategia: jerarquía progresiva. En pantallas estrechas se ocultan
+   primero lo prescindible (socials ya están en el footer) y se mantiene
+   "Agendar llamada" siempre visible con buen tamaño táctil. Así nunca
+   hay overflow y los botones son fáciles de pulsar en toda su superficie. */
+
+/* Tablet: reducimos tamaños pero mantenemos todo */
+@media (max-width: 900px) {
   .nav {
-    gap: 10px;
-    padding: 8px 8px 8px 16px;
-  }
-  .nav-logo-img {
-    height: 19px;
+    gap: 12px;
+    padding: 8px 10px 8px 16px;
   }
   .nav-socials {
     padding-left: 12px;
@@ -672,20 +662,43 @@ img {
     width: 28px;
     height: 28px;
   }
-  /* Agendar llamada SIEMPRE visible en la nav (cualquier versión) */
-  .nav-actions .btn-dark {
-    display: inline-flex;
-    height: 30px;
-    padding: 6px 14px;
-    font-size: 12px;
+  .nav-actions {
+    padding-left: 12px;
+    gap: 6px;
   }
-  /* Contacto se oculta en móvil (redundante con el footer) para evitar overflow */
+  .nav-actions .btn {
+    height: 36px;
+    padding: 6px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Móvil: ocultamos "Contacto" (redundante con el footer) y las socials.
+   Quedan logo + Agendar llamada. Sin overflow posible. */
+@media (max-width: 768px) {
+  .nav {
+    gap: 14px;
+    padding: 8px 10px 8px 14px;
+  }
+  .nav-logo-img {
+    height: 20px;
+  }
+  /* socials fuera de la nav en móvil (ya están en el footer) */
+  .nav-socials {
+    display: none;
+  }
+  /* Contacto fuera en móvil: evita overflow, ya accesible vía footer */
   .nav-actions .btn-light {
     display: none;
   }
   .nav-actions {
-    padding-left: 8px;
-    border-left: 1px solid var(--color-border);
+    border-left: none;
+    padding-left: 0;
+  }
+  .nav-actions .btn-dark {
+    height: 34px;
+    padding: 6px 18px;
+    font-size: 13px;
   }
   /* Toggle fuera de la nav: en móvil va abajo-derecha (FAB) para no chocar */
   .theme-toggle {
@@ -695,6 +708,27 @@ img {
     width: 44px;
     height: 44px;
   }
+}
+
+/* Móvil pequeño: ajuste fino, botones mantienen tamaño táctil */
+@media (max-width: 480px) {
+  .nav {
+    gap: 10px;
+    padding: 7px 9px 7px 12px;
+    max-width: calc(100% - 16px);
+  }
+  .nav-logo-img {
+    height: 18px;
+  }
+  .nav-actions .btn-dark {
+    height: 32px;
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ─── RESPONSIVE (resto de secciones) ─── */
+@media (max-width: 768px) {
   .intro {
     padding: 120px 20px 0;
   }
@@ -728,7 +762,6 @@ img {
   }
   .workflow-card {
     max-width: 100%;
-    flex: unset;
     padding: 20px 22px;
     gap: 8px;
   }

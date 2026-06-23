@@ -61,13 +61,10 @@ document.head.appendChild(lenisScript);
 (function initMarquee() {
   var track = document.getElementById('marqueeTrack');
   if (!track) return;
-  var set = 8; // nº de tiles por set
-  var copies = 2;
+  var set = 16;
   var html = '';
-  for (var c = 0; c < copies; c++) {
-    for (var i = 0; i < set; i++) {
-      html += '<div class="marquee-item" aria-hidden="true"></div>';
-    }
+  for (var i = 0; i < set; i++) {
+    html += '<div class="marquee-item" aria-hidden="true"></div>';
   }
   track.innerHTML = html;
 })();
