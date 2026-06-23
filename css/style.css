@@ -798,7 +798,7 @@ a.btn {
   }
   .workflow-horizontal {
     flex-direction: column;
-    padding: 48px 16px 0;
+    padding: 48px 0 0;
     gap: 12px;
     align-items: stretch;
   }

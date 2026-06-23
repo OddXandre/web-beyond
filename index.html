@@ -40,7 +40,7 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="#" class="nav-logo" aria-label="Beyond — inicio">
-      <img src="images/logonombre.png" alt="Beyond" class="nav-logo-img" height="22">
+      <img src="images/logo.png" alt="Beyond" class="nav-logo-img" height="22">
     </a>
 
     <div class="nav-socials">
@@ -56,8 +56,7 @@
     </div>
 
     <div class="nav-actions">
-      <button onclick="openBooking()" class="btn btn-dark">Agendar llamada</button>
-      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light">Contacto</a>
+      <button onclick="openBooking()" class="btn btn-dark"><span class="btn-label-long" data-i18n="nav-book">Agendar llamada</span><span class="btn-label-short" data-i18n="nav-book-short">Agenda</span></button>
     </div>
   </nav>
 
@@ -66,16 +65,17 @@
     <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
 
   <!-- INTRO / HERO -->
   <section class="intro">
     <h1 class="intro-heading">
-      <span class="line"><span class="line-inner">Beyond</span></span>
+      <span class="line"><span class="line-inner"><img src="images/logonombre.png" alt="Beyond" class="hero-logo-img"></span></span>
     </h1>
-    <p class="intro-sub">Las cosas bonitas también cambian el mundo.</p>
+    <p class="intro-sub" data-i18n="hero-sub">Las cosas bonitas también cambian el mundo.</p>
     <div class="intro-actions">
-      <button onclick="openBooking()" class="btn btn-dark">Agendar llamada</button>
-      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light">Contacto</a>
+      <button onclick="openBooking()" class="btn btn-dark" data-i18n="nav-book">Agendar llamada</button>
+      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light" data-i18n="btn-contact">Contacto</a>
     </div>
   </section>
 
@@ -88,23 +88,23 @@
   <section class="workflow-horizontal">
     <div class="workflow-card">
       <div class="wf-number">01</div>
-      <h3>Descubrimiento</h3>
-      <p>Comprensión profunda de tu negocio, construyendo la base para una estrategia impactante.</p>
+      <h3 data-i18n="wf-1-title">Descubrimiento</h3>
+      <p data-i18n="wf-1-text">Comprensión profunda de tu negocio, construyendo la base para una estrategia impactante.</p>
     </div>
     <div class="workflow-card">
       <div class="wf-number">02</div>
-      <h3>Diseño</h3>
-      <p>Conceptos innovadores y diseños centrados en tu audiencia para comunicar con efectividad.</p>
+      <h3 data-i18n="wf-2-title">Diseño</h3>
+      <p data-i18n="wf-2-text">Conceptos innovadores y diseños centrados en tu audiencia para comunicar con efectividad.</p>
     </div>
     <div class="workflow-card">
       <div class="wf-number">03</div>
-      <h3>Desarrollo</h3>
-      <p>Convertimos ideas en proyectos reales, construidos con precisión y entregados a tiempo.</p>
+      <h3 data-i18n="wf-3-title">Desarrollo</h3>
+      <p data-i18n="wf-3-text">Convertimos ideas en proyectos reales, construidos con precisión y entregados a tiempo.</p>
     </div>
     <div class="workflow-card">
       <div class="wf-number">04</div>
-      <h3>Lanzamiento</h3>
-      <p>Desplegamos tu proyecto, monitoreamos resultados y refinamos la estrategia para el éxito.</p>
+      <h3 data-i18n="wf-4-title">Lanzamiento</h3>
+      <p data-i18n="wf-4-text">Desplegamos tu proyecto, monitoreamos resultados y refinamos la estrategia para el éxito.</p>
     </div>
   </section>
 
@@ -113,17 +113,17 @@
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-start">
-          <p class="footer-label">Inicia un proyecto</p>
+          <p class="footer-label" data-i18n="footer-start">Inicia un proyecto</p>
           <a href="mailto:we.beyond.studio@gmail.com" class="footer-email">
             <span class="footer-email-text">we.beyond.studio@gmail.com</span>
           </a>
         </div>
         <div class="footer-location">
-          <p class="footer-label">/UBICACIÓN</p>
+          <p class="footer-label" data-i18n="footer-location-label">/UBICACIÓN</p>
           <p>Málaga, España</p>
         </div>
         <div class="footer-socials">
-          <p class="footer-label">/SOCIAL</p>
+          <p class="footer-label" data-i18n="footer-social-label">/SOCIAL</p>
           <a href="https://instagram.com/heybeyond_" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.linkedin.com/company/heybeyond/" target="_blank" rel="noopener">Linkedin</a>
           <a href="https://x.com/heybeyond_" target="_blank" rel="noopener">X</a>
@@ -131,7 +131,7 @@
       </div>
       <div class="footer-base">
         <span>© <span id="year">2026</span> Beyond Studio</span>
-        <span>Las cosas bonitas también cambian el mundo.</span>
+        <span data-i18n="footer-tagline">Las cosas bonitas también cambian el mundo.</span>
       </div>
     </div>
   </footer>

@@ -16,18 +16,12 @@
       duration: 0.7,
     });
 
-    tl.from('.intro-eyebrow', {
-      y: 14,
-      opacity: 0,
-      duration: 0.5,
-    }, '-=0.3');
-
     // Mask reveal del heading: el .line-inner sube desde dentro de su máscara
     tl.from('.intro-heading .line-inner', {
       yPercent: 110,
       duration: 0.9,
       ease: 'power4.out',
-    }, '-=0.2');
+    }, '-=0.3');
 
     tl.from('.intro-sub', {
       y: 14,
@@ -36,15 +30,14 @@
     }, '-=0.45');
 
     tl.from('.intro-actions .btn', {
-      y: 12,
+      y: 18,
       opacity: 0,
       duration: 0.5,
       stagger: 0.08,
-      clearProps: 'transform',
-    }, '-=0.3');
+    }, '-=0.25');
+
   } else {
-    // Sin animación: dejamos todo visible
-    gsap.set(['.nav', '.intro-eyebrow', '.intro-heading .line-inner', '.intro-sub', '.intro-actions .btn'], { clearProps: 'all' });
+    gsap.set(['.nav', '.intro-heading .line-inner', '.intro-sub', '.intro-actions .btn'], { clearProps: 'all' });
   }
 
   /* ─── WORKFLOW CARDS ─── */
@@ -59,20 +52,6 @@
       duration: 0.7,
       stagger: 0.1,
       ease: EASE,
-    });
-  }
-
-  /* ─── PARALLAX SUTIL EN EL MARQUEE ─── */
-  if (!reduceMotion) {
-    gsap.to('.marquee-section', {
-      scrollTrigger: {
-        trigger: '.marquee-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      y: -40,
-      ease: 'none',
     });
   }
 

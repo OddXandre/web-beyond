@@ -19,6 +19,96 @@
 })();
 
 /* ─────────────────────────────────────────────
+   TRADUCCIÓN ES/EN
+───────────────────────────────────────────── */
+(function initLang() {
+  var i18n = {
+    es: {
+      'title': 'Beyond — Estudio de diseño',
+      'desc': 'Estudio de diseño especializado en identidad visual, diseño de indumentaria y branding.',
+      'nav-book': 'Agendar llamada',
+      'nav-book-short': 'Agenda',
+      'hero-sub': 'Las cosas bonitas también cambian el mundo.',
+      'btn-contact': 'Contacto',
+      'wf-1-title': 'Descubrimiento',
+      'wf-1-text': 'Comprensión profunda de tu negocio, construyendo la base para una estrategia impactante.',
+      'wf-2-title': 'Diseño',
+      'wf-2-text': 'Conceptos innovadores y diseños centrados en tu audiencia para comunicar con efectividad.',
+      'wf-3-title': 'Desarrollo',
+      'wf-3-text': 'Convertimos ideas en proyectos reales, construidos con precisión y entregados a tiempo.',
+      'wf-4-title': 'Lanzamiento',
+      'wf-4-text': 'Desplegamos tu proyecto, monitoreamos resultados y refinamos la estrategia para el éxito.',
+      'footer-start': 'Inicia un proyecto',
+      'footer-location-label': '/UBICACIÓN',
+      'footer-social-label': '/SOCIAL',
+      'footer-tagline': 'Las cosas bonitas también cambian el mundo.',
+    },
+    en: {
+      'title': 'Beyond — Design Studio',
+      'desc': 'Design studio specialized in visual identity, fashion design, and branding.',
+      'nav-book': 'Book a call',
+      'nav-book-short': 'Book',
+      'hero-sub': 'Beautiful things also change the world.',
+      'btn-contact': 'Contact',
+      'wf-1-title': 'Discovery',
+      'wf-1-text': 'Deep understanding of your business, building the foundation for an impactful strategy.',
+      'wf-2-title': 'Design',
+      'wf-2-text': 'Innovative concepts and designs focused on your audience to communicate effectively.',
+      'wf-3-title': 'Development',
+      'wf-3-text': 'We turn ideas into real projects, built with precision and delivered on time.',
+      'wf-4-title': 'Launch',
+      'wf-4-text': 'We deploy your project, monitor results, and refine the strategy for success.',
+      'footer-start': 'Start a project',
+      'footer-location-label': '/LOCATION',
+      'footer-social-label': '/SOCIAL',
+      'footer-tagline': 'Beautiful things also change the world.',
+    },
+  };
+
+  var lang = 'es';
+  var btn = document.getElementById('langToggle');
+  if (!btn) return;
+
+  // restore saved
+  try {
+    var saved = localStorage.getItem('beyond-lang');
+    if (saved === 'en' || saved === 'es') lang = saved;
+  } catch (e) {}
+
+  function swap(l) {
+    lang = l;
+    var t = i18n[l];
+    if (!t) return;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+    document.title = t.title || 'Beyond';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta && t.desc) meta.setAttribute('content', t.desc);
+    var og = document.querySelector('meta[property="og:description"]');
+    if (og && t.desc) og.setAttribute('content', t.desc);
+    document.documentElement.setAttribute('lang', l);
+    btn.textContent = l === 'es' ? 'EN' : 'ES';
+    try { localStorage.setItem('beyond-lang', l); } catch (e) {}
+  }
+
+  function apply(l) {
+    document.body.classList.add('is-translating');
+    setTimeout(function () {
+      swap(l);
+      document.body.classList.remove('is-translating');
+    }, 200);
+  }
+
+  apply(lang);
+
+  btn.addEventListener('click', function () {
+    apply(lang === 'es' ? 'en' : 'es');
+  });
+})();
+
+/* ─────────────────────────────────────────────
    AÑO DINÁMICO EN EL FOOTER
 ───────────────────────────────────────────── */
 (function initYear() {
