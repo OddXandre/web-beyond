@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Beyond — Estudio de diseño</title>
+  <meta name="description" content="Estudio de diseño especializado en identidad visual, diseño de indumentaria y branding.">
+  <meta property="og:title" content="Beyond">
+  <meta property="og:description" content="Estudio de diseño especializado en identidad visual, diseño de indumentaria y branding.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/images/logo.png?v=2">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+
+  <!-- Anti-flash: aplica el tema antes del primer paint -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('beyond-theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal-overlay" id="bookingModal" onclick="if(event.target===this)closeBooking()">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeBooking()" aria-label="Cerrar">&times;</button>
+      <div class="modal-iframe-wrap">
+        <iframe src="https://cal.com/wearebeyond/descubrimiento" width="100%" height="100%" frameborder="0" title="Agendar llamada"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo" aria-label="Beyond — inicio">
+      <img src="images/logonombre.png" alt="Beyond" class="nav-logo-img" height="22">
+    </a>
+
+    <div class="nav-socials">
+      <a href="https://instagram.com/wearebeyond_" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/heybeyond/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://x.com/heybeyond_" target="_blank" rel="noopener" aria-label="X">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+
+    <div class="nav-actions">
+      <button onclick="openBooking()" class="btn btn-dark">Agendar llamada</button>
+      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- THEME TOGGLE (flotante, fuera de la nav) -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <!-- INTRO / HERO -->
+  <section class="intro">
+    <h1 class="intro-heading">
+      <span class="line"><span class="line-inner">Beyond</span></span>
+    </h1>
+    <p class="intro-sub">Las cosas bonitas también cambian el mundo.</p>
+    <div class="intro-actions">
+      <button onclick="openBooking()" class="btn btn-dark">Agendar llamada</button>
+      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light">Contacto</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee-section">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="workflow-horizontal">
+    <div class="workflow-card">
+      <div class="wf-number">01</div>
+      <h3>Descubrimiento</h3>
+      <p>Comprensión profunda de tu negocio, construyendo la base para una estrategia impactante.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="wf-number">02</div>
+      <h3>Diseño</h3>
+      <p>Conceptos innovadores y diseños centrados en tu audiencia para comunicar con efectividad.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="wf-number">03</div>
+      <h3>Desarrollo</h3>
+      <p>Convertimos ideas en proyectos reales, construidos con precisión y entregados a tiempo.</p>
+    </div>
+    <div class="workflow-card">
+      <div class="wf-number">04</div>
+      <h3>Lanzamiento</h3>
+      <p>Desplegamos tu proyecto, monitoreamos resultados y refinamos la estrategia para el éxito.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-start">
+          <p class="footer-label">Inicia un proyecto</p>
+          <a href="mailto:we.beyond.studio@gmail.com" class="footer-email">
+            <span class="footer-email-text">we.beyond.studio@gmail.com</span>
+            <span class="footer-email-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="footer-location">
+          <p class="footer-label">/UBICACIÓN</p>
+          <p>Málaga, España</p>
+        </div>
+        <div class="footer-socials">
+          <p class="footer-label">/SOCIAL</p>
+          <a href="https://instagram.com/wearebeyond_" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/company/heybeyond/" target="_blank" rel="noopener">Linkedin</a>
+          <a href="https://x.com/heybeyond_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© <span id="year">2026</span> Beyond Studio</span>
+        <span>Las cosas bonitas también cambian el mundo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js" defer></script>
+</body>
+</html>

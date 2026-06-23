@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencias (por si se añade un package.json luego)
+node_modules/
+
+# Build / cache
+.vercel/
+dist/
+.cache/
