@@ -40,7 +40,8 @@
   --shadow-nav: 0 8px 32px rgba(10, 10, 10, 0.06);
   --shadow-card: 0 1px 2px rgba(10, 10, 10, 0.04);
   --shadow-card-hover: 0 24px 48px -16px rgba(10, 10, 10, 0.16);
-  --logo-invert: 0;
+  --logo-invert: 1;
+  --logonombre-invert: 0;
   --tile-grad-a: linear-gradient(145deg, #f4f2ee 0%, #e3e0da 100%);
   --tile-grad-b: linear-gradient(145deg, #efece6 0%, #d9d5cd 100%);
   --tile-grad-c: linear-gradient(145deg, #f7f5f1 0%, #e8e5df 100%);
@@ -67,7 +68,8 @@
   --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-card-hover: 0 24px 48px -16px rgba(0, 0, 0, 0.7);
-  --logo-invert: 1;
+  --logo-invert: 0;
+  --logonombre-invert: 1;
   --tile-grad-a: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
   --tile-grad-b: linear-gradient(145deg, #161616 0%, #2a2a2a 100%);
   --tile-grad-c: linear-gradient(145deg, #1e1e1e 0%, #2c2c2c 100%);
@@ -102,7 +104,12 @@ body {
   background: var(--color-bg);
   line-height: 1.5;
   overflow-x: hidden;
-  transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft);
+  transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft),
+              opacity 0.2s ease;
+}
+
+body.is-translating {
+  opacity: 0;
 }
 
 a {
@@ -164,9 +171,7 @@ img {
   border: 1px solid var(--color-nav-border);
   border-radius: 30px;
   box-shadow: var(--shadow-nav);
-  max-width: calc(100% - 32px);
-  width: auto;
-  overflow: hidden;
+  width: max-content;
   transition: background-color 0.35s var(--ease-soft),
               border-color 0.35s var(--ease-soft);
 }
@@ -183,8 +188,8 @@ img {
   width: auto;
   display: block;
   filter: invert(var(--logo-invert));
-  transition: filter 0.35s var(--ease-soft), opacity 0.2s;
-  opacity: 0.92;
+  transition: filter 0.35s var(--ease-soft), opacity 0.25s var(--ease-soft);
+  opacity: 0.88;
 }
 
 .nav-logo:hover .nav-logo-img {
@@ -271,6 +276,42 @@ img {
   transform: rotate(90deg) scale(0.5);
 }
 
+/* ─── LANGUAGE TOGGLE ─── */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 74px;
+  z-index: 101;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-nav-border);
+  background: var(--color-nav-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  color: var(--color-text);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-nav);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 0.3s var(--ease-out),
+              background-color 0.35s var(--ease-soft),
+              border-color 0.35s var(--ease-soft);
+}
+
+.lang-toggle:hover {
+  transform: scale(1.08);
+}
+
+.lang-toggle:active {
+  transform: scale(0.95);
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -278,6 +319,19 @@ img {
   padding-left: 10px;
   border-left: 1px solid var(--color-border);
   transition: border-color 0.35s var(--ease-soft);
+}
+
+.btn-label-short {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btn-label-long {
+    display: none;
+  }
+  .btn-label-short {
+    display: inline;
+  }
 }
 
 /* ─── BUTTONS ─── */
@@ -332,60 +386,47 @@ a.btn {
 
 /* ─── INTRO / HERO ─── */
 .intro {
-  padding: 140px 24px 0;
+  padding: 160px 24px 0;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-}
-
-.intro-eyebrow {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--color-text-label);
-  margin-bottom: 28px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.intro-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-text);
-  opacity: 0.85;
-  flex-shrink: 0;
 }
 
 .intro-heading {
   font-weight: 500;
   font-size: clamp(40px, 9vw, 120px);
   line-height: 1;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.07em;
   color: var(--color-text);
+}
+
+.hero-logo-img {
+  display: block;
+  height: clamp(40px, 9vw, 120px);
+  width: auto;
+  margin: 0 auto;
+  filter: invert(var(--logonombre-invert));
+  transition: filter 0.35s var(--ease-soft);
 }
 
 /* líneas para mask reveal */
 .intro-heading .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.05em;
+  padding-bottom: 0.02em;
 }
 
 .intro-heading .line-inner {
   display: block;
-  will-change: transform;
 }
 
 .intro-sub {
   font-weight: 400;
   font-size: clamp(16px, 1.8vw, 19px);
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  margin-top: 24px;
-  letter-spacing: -0.02em;
+  margin-top: 28px;
+  letter-spacing: -0.025em;
   max-width: 420px;
   margin-left: auto;
   margin-right: auto;
@@ -394,8 +435,10 @@ a.btn {
 .intro-actions {
   display: flex;
   gap: 8px;
-  margin-top: 36px;
+  margin-top: 40px;
   justify-content: center;
+  position: relative;
+  z-index: 5;
 }
 
 /* ─── MARQUEE ─── */
@@ -423,7 +466,6 @@ a.btn {
   display: flex;
   gap: 14px;
   width: max-content;
-  will-change: transform;
   animation: marqueeScroll 28s linear infinite;
 }
 
@@ -446,6 +488,7 @@ a.btn {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--color-border);
+  cursor: default;
   transition: transform 0.4s var(--ease-out);
 }
 
@@ -485,7 +528,7 @@ a.btn {
   gap: 14px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 24px 0;
+  padding: 60px 24px 0;
   justify-content: center;
 }
 
@@ -673,21 +716,15 @@ a.btn {
   }
 }
 
-/* Móvil: ocultamos "Contacto" (redundante con el footer) y las socials.
-   Quedan logo + Agendar llamada. Sin overflow posible. */
+/* Móvil: nav más ancha, sin overflow. Todo visible. */
 @media (max-width: 768px) {
   .nav {
-    gap: 14px;
-    padding: 8px 10px 8px 14px;
+    gap: 10px;
+    padding: 6px 12px;
   }
   .nav-logo-img {
-    height: 20px;
+    height: 18px;
   }
-  /* socials fuera de la nav en móvil (ya están en el footer) */
-  .nav-socials {
-    display: none;
-  }
-  /* Contacto fuera en móvil: evita overflow, ya accesible vía footer */
   .nav-actions .btn-light {
     display: none;
   }
@@ -696,11 +733,10 @@ a.btn {
     padding-left: 0;
   }
   .nav-actions .btn-dark {
-    height: 34px;
-    padding: 6px 18px;
+    height: 30px;
+    padding: 4px 14px;
     font-size: 13px;
   }
-  /* Toggle fuera de la nav: en móvil va abajo-derecha (FAB) para no chocar */
   .theme-toggle {
     top: auto;
     right: 16px;
@@ -708,21 +744,26 @@ a.btn {
     width: 44px;
     height: 44px;
   }
+  .lang-toggle {
+    top: auto;
+    right: 66px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
 }
 
-/* Móvil pequeño: ajuste fino, botones mantienen tamaño táctil */
 @media (max-width: 480px) {
   .nav {
-    gap: 10px;
-    padding: 7px 9px 7px 12px;
-    max-width: calc(100% - 16px);
+    gap: 8px;
+    padding: 5px 8px;
   }
   .nav-logo-img {
-    height: 18px;
+    height: 16px;
   }
   .nav-actions .btn-dark {
-    height: 32px;
-    padding: 6px 16px;
+    height: 26px;
+    padding: 3px 12px;
     font-size: 12px;
   }
 }
@@ -757,13 +798,17 @@ a.btn {
   }
   .workflow-horizontal {
     flex-direction: column;
-    padding: 32px 16px 0;
+    padding: 48px 16px 0;
     gap: 12px;
+    align-items: stretch;
   }
   .workflow-card {
-    max-width: 100%;
+    max-width: none;
+    width: 100%;
     padding: 20px 22px;
     gap: 8px;
+    text-align: center;
+    align-items: center;
   }
   .workflow-card h3 {
     font-size: 18px;
