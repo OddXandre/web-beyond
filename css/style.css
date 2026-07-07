@@ -593,7 +593,7 @@ a.btn {
   gap: 14px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 24px 0;
+  padding: 60px 24px 60px;
   justify-content: center;
 }
 
