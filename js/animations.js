@@ -36,17 +36,6 @@
   }, '-=0.3');
 
   /* ─── HERO PARALLAX ON SCROLL ─── */
-  gsap.to('.intro-sub', {
-    scrollTrigger: {
-      trigger: '.intro',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-    y: 20,
-    ease: 'none',
-  });
-
   gsap.to('.intro-actions', {
     scrollTrigger: {
       trigger: '.intro',
