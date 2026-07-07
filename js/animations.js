@@ -69,21 +69,37 @@
   gsap.from('.footer-grid > *', {
     scrollTrigger: {
       trigger: '.footer',
-      start: 'top 88%',
+      start: 'top 85%',
     },
     y: 24,
     opacity: 0,
     duration: 0.6,
-    stagger: 0.08,
+    stagger: 0.1,
     ease: EASE_SMOOTH,
   });
+
+  var footerEmail = document.querySelector('.footer-email');
+  if (footerEmail) {
+    gsap.from(footerEmail, {
+      scrollTrigger: {
+        trigger: '.footer',
+        start: 'top 85%',
+      },
+      clipPath: 'inset(0 100% 0 0)',
+      duration: 1.0,
+      delay: 0.35,
+      ease: 'power3.inOut',
+    });
+  }
 
   gsap.from('.footer-base', {
     scrollTrigger: {
       trigger: '.footer-base',
       start: 'top 92%',
     },
+    y: 16,
     opacity: 0,
     duration: 0.5,
+    ease: EASE_SMOOTH,
   });
 })();
