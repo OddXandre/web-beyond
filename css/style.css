@@ -975,7 +975,7 @@ a.btn {
   left: 0;
   right: 0;
   z-index: 5;
-  height: 40%;
+  height: 25%;
   pointer-events: none;
   transform: translateZ(0);
 }
