@@ -41,6 +41,54 @@
   var EASE = 'power3.out';
   var EASE_SMOOTH = 'power2.out';
 
+  /* ─── MARQUEE HOVER PAUSE (CSS animation play-state) ─── */
+  (function marqueeHover() {
+    var track = document.getElementById('marqueeTrack');
+    if (!track) return;
+    track.addEventListener('mouseenter', function () { track.style.animationPlayState = 'paused'; });
+    track.addEventListener('mouseleave', function () { track.style.animationPlayState = 'running'; });
+  })();
+
+  /* ─── WF-NUMBER POP-IN ─── */
+  if (!reduceMotion) {
+    gsap.from('.wf-number', {
+      scrollTrigger: {
+        trigger: '.workflow-horizontal',
+        start: 'top 78%',
+      },
+      scale: 0.5,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'back.out(1.7)',
+    });
+  }
+
+  /* ─── HERO PARALLAX ─── */
+  if (!reduceMotion) {
+    gsap.to('.intro', {
+      scrollTrigger: {
+        trigger: '.intro',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+      y: 40,
+      opacity: 0.6,
+      ease: 'none',
+    });
+    gsap.to('.marquee-section', {
+      scrollTrigger: {
+        trigger: '.marquee-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+      y: -20,
+      ease: 'none',
+    });
+  }
+
   /* ─── MASTER TIMELINE (entrada) ─── */
   if (!reduceMotion) {
     var tl = gsap.timeline({ defaults: { ease: EASE } });

@@ -226,7 +226,7 @@ img {
 .theme-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   z-index: 101;
   width: 44px;
   height: 44px;
@@ -280,7 +280,7 @@ img {
 .lang-toggle {
   position: fixed;
   top: 20px;
-  right: 74px;
+  left: 74px;
   z-index: 101;
   width: 44px;
   height: 44px;
@@ -794,6 +794,7 @@ a.btn {
   }
   .theme-toggle {
     top: auto;
+    left: auto;
     right: 16px;
     bottom: 16px;
     width: 44px;
@@ -801,6 +802,7 @@ a.btn {
   }
   .lang-toggle {
     top: auto;
+    left: auto;
     right: 66px;
     bottom: 16px;
     width: 44px;
@@ -977,7 +979,7 @@ a.btn {
 .container-lines { position: relative; isolation: isolate; }
 .container-lines::before,
 .container-lines::after {
-  content: ''; position: fixed; top: 0; bottom: 0; z-index: 0;
+  content: ''; position: fixed; top: 0; bottom: 0; z-index: -1;
   width: 1px; pointer-events: none;
   background: var(--color-border);
   opacity: 0.6;
