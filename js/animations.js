@@ -16,7 +16,6 @@
       duration: 0.7,
     });
 
-    // Mask reveal del heading: el .line-inner sube desde dentro de su máscara
     tl.from('.intro-heading .line-inner', {
       yPercent: 110,
       duration: 0.9,
@@ -40,7 +39,53 @@
     gsap.set(['.nav', '.intro-heading .line-inner', '.intro-sub', '.intro-actions .btn'], { clearProps: 'all' });
   }
 
-  /* ─── WORKFLOW CARDS (sin animación de entrada) ─── */
+  /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
+  if (!reduceMotion) {
+    gsap.from('.workflow-card', {
+      scrollTrigger: {
+        trigger: '.workflow-horizontal',
+        start: 'top 80%',
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: EASE,
+    });
+  }
+
+  /* ─── MARQUEE TILES: SUBTLE FLOAT ─── */
+  if (!reduceMotion) {
+    var items = document.querySelectorAll('.marquee-item');
+    items.forEach(function (el, i) {
+      var direction = i % 2 === 0 ? 1 : -1;
+      gsap.to(el, {
+        y: direction * 4,
+        duration: 2 + (i % 3) * 0.5,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+      });
+    });
+  }
+
+  /* ─── THEME TRANSITION POLISH ─── */
+  var toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      if (reduceMotion) return;
+      var overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:999;pointer-events:none;background:var(--color-bg);opacity:0;transition:opacity 0.3s ease';
+      document.body.appendChild(overlay);
+      requestAnimationFrame(function () {
+        overlay.style.opacity = '0.3';
+        setTimeout(function () {
+          overlay.style.opacity = '0';
+          setTimeout(function () { overlay.remove(); }, 350);
+        }, 150);
+      });
+    });
+  }
 
   /* ─── FOOTER ─── */
   if (!reduceMotion) {
