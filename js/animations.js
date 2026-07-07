@@ -1,54 +1,10 @@
 (function () {
   if (!window.gsap) return;
-
-  /* ─── DITHER CANVAS ─── */
-  try {
-    (function dither() {
-      var c = document.getElementById('dither-canvas');
-      if (!c) return;
-      var ctx = c.getContext('2d');
-      if (!ctx) return;
-      var resize = function () { c.width = window.innerWidth; c.height = window.innerHeight; };
-      resize();
-      window.addEventListener('resize', resize);
-      var imgData = ctx.createImageData(c.width, c.height);
-      var d = imgData.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var v = Math.random() * 255;
-        d[i] = d[i+1] = d[i+2] = v;
-        d[i+3] = Math.random() < 0.4 ? 30 : 0;
-      }
-      ctx.putImageData(imgData, 0, 0);
-    })();
-  } catch (e) {}
-
-  /* ─── WORD REVEAL (tagline) ─── */
-  try {
-    (function wordReveal() {
-      var el = document.querySelector('[data-word-reveal]');
-      if (!el) return;
-      var words = el.textContent.trim().split(/\s+/);
-      el.innerHTML = words.map(function (w, i) {
-        return '<span class="word-reveal__word" style="--word-index:' + i + '">' + w + '</span>';
-      }).join(' ');
-    })();
-  } catch (e) {}
-
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ─── REGISTER PLUGINS ─── */
-  try { gsap.registerPlugin(ScrollTrigger); } catch (e) {}
+  gsap.registerPlugin(ScrollTrigger);
 
   var EASE = 'power3.out';
   var EASE_SMOOTH = 'power2.out';
-
-  /* ─── MARQUEE HOVER PAUSE ─── */
-  (function marqueeHover() {
-    var track = document.getElementById('marqueeTrack');
-    if (!track) return;
-    track.addEventListener('mouseenter', function () { track.style.animationPlayState = 'paused'; });
-    track.addEventListener('mouseleave', function () { track.style.animationPlayState = 'running'; });
-  })();
 
   /* ─── MASTER TIMELINE (entrada) ─── */
   if (!reduceMotion) {
@@ -154,4 +110,71 @@
       duration: 0.5,
     });
   }
+
+  /* ─── GSAP EXTRA: wf-number pop-in ─── */
+  if (!reduceMotion) {
+    gsap.from('.wf-number', {
+      scrollTrigger: {
+        trigger: '.workflow-horizontal',
+        start: 'top 78%',
+      },
+      scale: 0.5,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'back.out(1.7)',
+    });
+  }
+
+  /* ─── GSAP EXTRA: hero parallax ─── */
+  if (!reduceMotion) {
+    gsap.to('.intro', {
+      scrollTrigger: {
+        trigger: '.intro',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+      y: 40,
+      opacity: 0.6,
+      ease: 'none',
+    });
+    gsap.to('.marquee-section', {
+      scrollTrigger: {
+        trigger: '.marquee-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+      y: -20,
+      ease: 'none',
+    });
+  }
+
+  /* ─── MARQUEE HOVER PAUSE ─── */
+  (function () {
+    var track = document.getElementById('marqueeTrack');
+    if (!track) return;
+    track.addEventListener('mouseenter', function () { track.style.animationPlayState = 'paused'; });
+    track.addEventListener('mouseleave', function () { track.style.animationPlayState = 'running'; });
+  })();
+
+  /* ─── DITHER CANVAS ─── */
+  (function () {
+    var c = document.getElementById('dither-canvas');
+    if (!c) return;
+    var ctx = c.getContext('2d');
+    if (!ctx) return;
+    var resize = function () { c.width = window.innerWidth; c.height = window.innerHeight; };
+    resize();
+    window.addEventListener('resize', resize);
+    var imgData = ctx.createImageData(c.width, c.height);
+    var d = imgData.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var v = Math.random() * 255;
+      d[i] = d[i+1] = d[i+2] = v;
+      d[i+3] = Math.random() < 0.4 ? 30 : 0;
+    }
+    ctx.putImageData(imgData, 0, 0);
+  })();
 })();
