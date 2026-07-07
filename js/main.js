@@ -129,17 +129,20 @@ lenisScript.onload = function () {
     smoothWheel: true,
     touchMultiplier: 1.5,
   });
-  function raf(time) {
-    window.lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
 
-  // Sincroniza Lenis con ScrollTrigger de GSAP si está presente
+  // Sincroniza Lenis con GSAP ticker (único rAF)
   if (window.ScrollTrigger && window.gsap) {
-    window.lenis.on('scroll', window.ScrollTrigger.update);
-    window.gsap.ticker.add(function (time) { window.lenis.raf(time * 1000); });
+    window.gsap.ticker.add(function (time) {
+      window.lenis.raf(time * 1000);
+    });
     window.gsap.ticker.lagSmoothing(0);
+    window.lenis.on('scroll', window.ScrollTrigger.update);
+  } else {
+    function raf(time) {
+      window.lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
   }
 };
 document.head.appendChild(lenisScript);
