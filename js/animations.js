@@ -35,18 +35,6 @@
     stagger: 0.12,
   }, '-=0.3');
 
-  /* ─── HERO PARALLAX ON SCROLL ─── */
-  gsap.to('.intro-actions', {
-    scrollTrigger: {
-      trigger: '.intro',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-    y: 40,
-    ease: 'none',
-  });
-
   /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
   gsap.from('.workflow-card', {
     scrollTrigger: {
