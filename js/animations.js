@@ -78,20 +78,6 @@
     ease: EASE_SMOOTH,
   });
 
-  var footerEmail = document.querySelector('.footer-email');
-  if (footerEmail) {
-    gsap.from(footerEmail, {
-      scrollTrigger: {
-        trigger: '.footer',
-        start: 'top 85%',
-      },
-      clipPath: 'inset(0 100% 0 0)',
-      duration: 1.0,
-      delay: 0.35,
-      ease: 'power3.inOut',
-    });
-  }
-
   gsap.from('.footer-base', {
     scrollTrigger: {
       trigger: '.footer-base',
