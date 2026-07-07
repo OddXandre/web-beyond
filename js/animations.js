@@ -9,29 +9,30 @@
   var tl = gsap.timeline({ defaults: { ease: EASE } });
 
   tl.from('.nav', {
-    y: -32,
+    y: -48,
     opacity: 0,
-    duration: 0.7,
+    duration: 1.0,
   });
 
   tl.from('.intro-heading .line-inner', {
-    yPercent: 110,
-    duration: 0.9,
+    yPercent: 120,
+    opacity: 0,
+    duration: 1.1,
     ease: 'power4.out',
-  }, '-=0.3');
+  }, '-=0.35');
 
   tl.from('.intro-sub', {
-    y: 14,
+    y: 20,
     opacity: 0,
-    duration: 0.6,
-  }, '-=0.45');
+    duration: 0.8,
+  }, '-=0.5');
 
   tl.from('.intro-actions .btn', {
-    y: 18,
+    y: 24,
     opacity: 0,
-    duration: 0.5,
-    stagger: 0.08,
-  }, '-=0.25');
+    duration: 0.6,
+    stagger: 0.12,
+  }, '-=0.3');
 
   /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
   gsap.from('.workflow-card', {
@@ -44,19 +45,6 @@
     duration: 0.7,
     stagger: 0.1,
     ease: EASE,
-  });
-
-  /* ─── MARQUEE TILES: SUBTLE FLOAT ─── */
-  var items = document.querySelectorAll('.marquee-item');
-  items.forEach(function (el, i) {
-    var direction = i % 2 === 0 ? 1 : -1;
-    gsap.to(el, {
-      y: direction * 4,
-      duration: 2 + (i % 3) * 0.5,
-      ease: 'sine.inOut',
-      yoyo: true,
-      repeat: -1,
-    });
   });
 
   /* ─── THEME TRANSITION POLISH ─── */

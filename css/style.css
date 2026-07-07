@@ -967,3 +967,15 @@ a.btn {
   opacity: 0.7;
   transform: rotate(90deg);
 }
+
+/* ─── BOTTOM BLUR ─── */
+.bottom-blur {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-bg) 100%);
+  pointer-events: none;
+  z-index: 50;
+}
