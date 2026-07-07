@@ -25,7 +25,7 @@
     })();
   </script>
 </head>
-<body>
+<body class="container-lines">
 
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal" onclick="if(event.target===this)closeBooking()">
@@ -56,7 +56,7 @@
     </div>
 
     <div class="nav-actions">
-      <button onclick="openBooking()" class="btn btn-dark"><span class="btn-label-long" data-i18n="nav-book">Agendar llamada</span><span class="btn-label-short" data-i18n="nav-book-short">Agenda</span></button>
+      <button onclick="openBooking()" class="btn btn-dark corner-diag-sm"><span class="btn-label-long" data-i18n="nav-book">Agendar llamada</span><span class="btn-label-short" data-i18n="nav-book-short">Agenda</span></button>
     </div>
   </nav>
 
@@ -72,10 +72,10 @@
     <h1 class="intro-heading">
       <span class="line"><span class="line-inner"><img src="images/logonombre.png" alt="Beyond" class="hero-logo-img"></span></span>
     </h1>
-    <p class="intro-sub" data-i18n="hero-sub">Las cosas bonitas también cambian el mundo.</p>
+    <p class="intro-sub" data-i18n="hero-sub" data-word-reveal>Las cosas bonitas también cambian el mundo.</p>
     <div class="intro-actions">
-      <button onclick="openBooking()" class="btn btn-dark" data-i18n="nav-book">Agendar llamada</button>
-      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light" data-i18n="btn-contact">Contacto</a>
+      <button onclick="openBooking()" class="btn btn-dark corner-diag-sm" data-i18n="nav-book">Agendar llamada</button>
+      <a href="mailto:we.beyond.studio@gmail.com" class="btn btn-light corner-diag-sm" data-i18n="btn-contact">Contacto</a>
     </div>
   </section>
 
@@ -86,22 +86,22 @@
 
   <!-- WORKFLOW -->
   <section class="workflow-horizontal">
-    <div class="workflow-card">
+    <div class="workflow-card gradient-edge">
       <div class="wf-number">01</div>
       <h3 data-i18n="wf-1-title">Descubrimiento</h3>
       <p data-i18n="wf-1-text">Comprensión profunda de tu negocio, construyendo la base para una estrategia impactante.</p>
     </div>
-    <div class="workflow-card">
+    <div class="workflow-card gradient-edge">
       <div class="wf-number">02</div>
       <h3 data-i18n="wf-2-title">Diseño</h3>
       <p data-i18n="wf-2-text">Conceptos innovadores y diseños centrados en tu audiencia para comunicar con efectividad.</p>
     </div>
-    <div class="workflow-card">
+    <div class="workflow-card gradient-edge">
       <div class="wf-number">03</div>
       <h3 data-i18n="wf-3-title">Desarrollo</h3>
       <p data-i18n="wf-3-text">Convertimos ideas en proyectos reales, construidos con precisión y entregados a tiempo.</p>
     </div>
-    <div class="workflow-card">
+    <div class="workflow-card gradient-edge">
       <div class="wf-number">04</div>
       <h3 data-i18n="wf-4-title">Lanzamiento</h3>
       <p data-i18n="wf-4-text">Desplegamos tu proyecto, monitoreamos resultados y refinamos la estrategia para el éxito.</p>
@@ -134,6 +134,11 @@
       </div>
     </div>
   </footer>
+
+  <div class="gradient-blur" aria-hidden="true">
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+  <canvas id="dither-canvas" aria-hidden="true"></canvas>
 
   <script src="js/main.js"></script>
   <script src="js/animations.js" defer></script>
