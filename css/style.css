@@ -968,40 +968,14 @@ a.btn {
   transform: rotate(90deg);
 }
 
-/* ─── PROGRESSIVE BOTTOM BLUR ─── */
-.gradient-blur-bot {
+/* ─── BOTTOM BLUR ─── */
+.bottom-blur {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 5;
-  height: 10%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-bg) 100%);
   pointer-events: none;
-}
-.gradient-blur-bot::before,
-.gradient-blur-bot > div {
-  position: absolute;
-  inset: 0;
-}
-.gradient-blur-bot::before {
-  content: '';
-  z-index: 1;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  mask: linear-gradient(to bottom, transparent 0%, #000 15%, #000 30%, transparent 45%);
-  -webkit-mask: linear-gradient(to bottom, transparent 0%, #000 15%, #000 30%, transparent 45%);
-}
-.gradient-blur-bot > div:nth-of-type(1) {
-  z-index: 2;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  mask: linear-gradient(to bottom, transparent 30%, #000 45%, #000 60%, transparent 75%);
-  -webkit-mask: linear-gradient(to bottom, transparent 30%, #000 45%, #000 60%, transparent 75%);
-}
-.gradient-blur-bot > div:nth-of-type(2) {
-  z-index: 3;
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  mask: linear-gradient(to bottom, transparent 60%, #000 75%, #000 100%);
-  -webkit-mask: linear-gradient(to bottom, transparent 60%, #000 75%, #000 100%);
+  z-index: 50;
 }

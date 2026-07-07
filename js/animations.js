@@ -1,12 +1,13 @@
 (function () {
   if (!window.gsap) return;
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   var EASE = 'power3.out';
   var EASE_SMOOTH = 'power2.out';
 
   /* ─── MASTER TIMELINE (entrada) ─── */
-  var tl = gsap.timeline({ defaults: { ease: EASE } });
+  var tl = gsap.timeline({ defaults: { ease: EASE }, delay: 0.15 });
 
   tl.from('.nav', {
     y: -48,
