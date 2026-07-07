@@ -227,7 +227,6 @@ img {
   position: fixed;
   top: 20px;
   right: 20px;
-  left: auto;
   z-index: 101;
   width: 44px;
   height: 44px;
@@ -282,7 +281,6 @@ img {
   position: fixed;
   top: 20px;
   right: 74px;
-  left: auto;
   z-index: 101;
   width: 44px;
   height: 44px;
@@ -796,7 +794,6 @@ a.btn {
   }
   .theme-toggle {
     top: auto;
-    left: auto;
     right: 16px;
     bottom: 16px;
     width: 44px;
@@ -804,7 +801,6 @@ a.btn {
   }
   .lang-toggle {
     top: auto;
-    left: auto;
     right: 66px;
     bottom: 16px;
     width: 44px;
@@ -970,151 +966,4 @@ a.btn {
 .modal-close:hover {
   opacity: 0.7;
   transform: rotate(90deg);
-}
-
-/* ═══════════════════════════════════════════════
-   MENGTO PATTERNS — container lines · framed brackets ·
-   corner diagonals · gradient borders · dither · progressive blur
-   ═══════════════════════════════════════════════ */
-
-/* ─── CONTAINER LINES (vertical guide rails) ─── */
-.container-lines { position: relative; isolation: isolate; }
-.container-lines::before,
-.container-lines::after {
-  content: ''; position: fixed; top: 0; bottom: 0; z-index: -1;
-  width: 1px; pointer-events: none;
-  background: var(--color-border);
-  opacity: 0.6;
-}
-.container-lines::before { left: max(24px, calc((100vw - 1200px) / 2)); }
-.container-lines::after { right: max(24px, calc((100vw - 1200px) / 2)); }
-@media (max-width: 1248px) { .container-lines::before, .container-lines::after { display: none; } }
-
-/* ─── CORNER DIAGONALS (chamfered edges) ─── */
-.corner-diag {
-  --cut: 14px;
-  clip-path: polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));
-}
-.corner-diag-sm {
-  --cut: 8px;
-  clip-path: polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));
-}
-
-/* ─── FRAMED BRACKETS (L-shaped section markers) ─── */
-.frame-brackets {
-  --bracket: 16px; --line: var(--color-border);
-  background:
-    linear-gradient(var(--line),var(--line)) left top / var(--bracket) 1px no-repeat,
-    linear-gradient(var(--line),var(--line)) left top / 1px var(--bracket) no-repeat,
-    linear-gradient(var(--line),var(--line)) right top / var(--bracket) 1px no-repeat,
-    linear-gradient(var(--line),var(--line)) right top / 1px var(--bracket) no-repeat,
-    linear-gradient(var(--line),var(--line)) left bottom / var(--bracket) 1px no-repeat,
-    linear-gradient(var(--line),var(--line)) left bottom / 1px var(--bracket) no-repeat,
-    linear-gradient(var(--line),var(--line)) right bottom / var(--bracket) 1px no-repeat,
-    linear-gradient(var(--line),var(--line)) right bottom / 1px var(--bracket) no-repeat,
-    transparent;
-  background-color: transparent !important;
-}
-
-/* ─── GRADIENT BORDER ENHANCEMENT for cards ─── */
-.gradient-edge {
-  border: 1px solid transparent;
-  border-radius: 18px;
-  background:
-    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
-    linear-gradient(135deg, var(--color-border), rgba(10,10,10,0.02), var(--color-border)) border-box;
-}
-
-/* ─── PROGRESSIVE BLUR (bottom fade) ─── */
-.gradient-blur {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 5;
-  height: 40%; pointer-events: none;
-  background: linear-gradient(to bottom, transparent 0%, var(--color-bg) 100%);
-}
-.gradient-blur > div { position: absolute; inset: 0; }
-.gradient-blur::before { content: ''; position: absolute; inset: 0; z-index: 1; backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); mask: linear-gradient(to bottom,transparent 0%,#000 20%,#000 30%,transparent 40%); -webkit-mask: linear-gradient(to bottom,transparent 0%,#000 20%,#000 30%,transparent 40%); }
-.gradient-blur > div:nth-child(1) { z-index: 2; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); mask: linear-gradient(to bottom,transparent 20%,#000 40%,#000 50%,transparent 60%); -webkit-mask: linear-gradient(to bottom,transparent 20%,#000 40%,#000 50%,transparent 60%); }
-.gradient-blur > div:nth-child(2) { z-index: 3; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); mask: linear-gradient(to bottom,transparent 40%,#000 60%,#000 70%,transparent 80%); -webkit-mask: linear-gradient(to bottom,transparent 40%,#000 60%,#000 70%,transparent 80%); }
-.gradient-blur > div:nth-child(3) { z-index: 4; backdrop-filter: blur(48px); -webkit-backdrop-filter: blur(48px); mask: linear-gradient(to bottom,transparent 60%,#000 80%,#000 100%); -webkit-mask: linear-gradient(to bottom,transparent 60%,#000 80%,#000 100%); }
-.gradient-blur::after { content: ''; position: absolute; inset: 0; z-index: 5; backdrop-filter: blur(80px); -webkit-backdrop-filter: blur(80px); mask: linear-gradient(to bottom,transparent 80%,#000 100%); -webkit-mask: linear-gradient(to bottom,transparent 80%,#000 100%); }
-
-/* ─── DITHER BACKGROUND (subtle canvas texture) ─── */
-#dither-canvas {
-  position: fixed; inset: 0; z-index: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none; opacity: 0.3;
-}
-
-/* ─── BEAUTIFUL SHADOWS (extra depth) ─── */
-.shadow-beauty {
-  box-shadow:
-    0px 0px 0px 1px rgba(10,10,10,0.03),
-    0px 1px 1px -0.5px rgba(10,10,10,0.03),
-    0px 3px 3px -1.5px rgba(10,10,10,0.03),
-    0px 6px 6px -3px rgba(10,10,10,0.03),
-    0px 12px 12px -6px rgba(10,10,10,0.03);
-}
-
-/* ─── MARQUEE ABSTRACT PATTERNS (sin imágenes) ─── */
-.marquee-item::before {
-  content: ''; position: absolute; inset: 0; z-index: 1;
-  pointer-events: none;
-}
-
-.marquee-item:nth-child(8n+1)::before {
-  background: radial-gradient(circle 50px at 75% 25%, var(--color-text) 0%, transparent 100%);
-  opacity: 0.04; border-radius: 50%;
-}
-.marquee-item:nth-child(8n+2)::before {
-  inset: 24px; border: 1px solid var(--color-text);
-  opacity: 0.05; border-radius: 50%;
-}
-.marquee-item:nth-child(8n+3)::before {
-  background:
-    radial-gradient(circle 5px at 20% 30%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 5px at 35% 30%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 5px at 50% 30%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 5px at 20% 50%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 5px at 35% 60%, var(--color-text) 0%, transparent 100%);
-  opacity: 0.06;
-}
-.marquee-item:nth-child(8n+4)::before {
-  left: 50%; top: 15%; bottom: 15%; width: 1px;
-  background: var(--color-text); opacity: 0.05;
-  border-radius: 0; inset: auto;
-}
-.marquee-item:nth-child(8n+5)::before {
-  background: conic-gradient(from 20deg at 70% 30%, var(--color-text) 0deg, transparent 60deg, transparent 300deg, var(--color-text) 360deg);
-  opacity: 0.04; border-radius: 50%; inset: 35px;
-}
-.marquee-item:nth-child(8n+6)::before {
-  border: 1px dashed var(--color-text); opacity: 0.05;
-  border-radius: 0; inset: 20px;
-}
-.marquee-item:nth-child(8n+7)::before {
-  background: radial-gradient(circle 70px at 50% 50%, var(--color-text) 0%, transparent 100%);
-  opacity: 0.03;
-}
-.marquee-item:nth-child(8n+8)::before {
-  background:
-    radial-gradient(circle 3px at 25% 25%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 3px at 75% 25%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 3px at 50% 50%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 3px at 25% 75%, var(--color-text) 0%, transparent 100%),
-    radial-gradient(circle 3px at 75% 75%, var(--color-text) 0%, transparent 100%);
-  opacity: 0.06;
-}
-
-@media (max-width: 768px) {
-  .marquee-item:nth-child(8n+4)::before,
-  .marquee-item:nth-child(8n+6)::before { display: none; }
-}
-
-/* ─── WORD REVEAL (para el tagline) ─── */
-.word-reveal__word { display: inline-block; }
-.word-reveal__word:not(:last-child) { margin-right: 0.25em; }
-
-@media (prefers-reduced-motion: reduce) {
-  .gradient-blur, #dither-canvas { display: none; }
-  .marquee-item::before { display: none; }
 }
