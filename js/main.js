@@ -114,6 +114,14 @@
 (function initNavTime() {
   var el = document.getElementById('navTimeText');
   if (!el) return;
+
+  var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var city = tz ? tz.split('/').pop().replace(/_/g, ' ') : '';
+  var prefix = document.createElement('span');
+  prefix.style.cssText = 'opacity:0.55;';
+  prefix.textContent = city;
+  el.parentNode.insertBefore(prefix, el);
+
   function tick() {
     var now = new Date();
     var h = now.getHours().toString().padStart(2, '0');
