@@ -364,6 +364,14 @@ img {
   animation: timeSlideUp 0.5s var(--ease-soft);
 }
 
+.time-pill .ctry {
+  opacity: 0.55;
+  transition: opacity 0.3s var(--ease-soft);
+}
+.time-pill .ctry.hide {
+  opacity: 0 !important;
+}
+
 @keyframes timeSlideUp {
   0% { transform: translateY(100%); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }

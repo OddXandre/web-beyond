@@ -155,12 +155,12 @@
 
   var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   var cc = countryFromTz(tz);
-  var suffix = document.createElement('span');
-  suffix.style.cssText = 'opacity:0.55;';
-  if (cc) {
+var suffix = document.createElement('span');
+suffix.className = 'ctry';
+if (cc) {
     var lang = langMap[cc] || 'en';
     suffix.textContent = new Intl.DisplayNames(lang, {type:'region'}).of(cc);
-  }
+}
   el.after(suffix);
 
   var use24h = true;
@@ -202,12 +202,15 @@
     pill.style.width = oldW + 'px';
     void pill.offsetWidth;
 
+    suffix.classList.add('hide');
+
     var cur = el.querySelector('.ti');
     if (cur) cur.className = 'ti old';
     var nextText = formatTime(new Date(), use24h);
     setTimeout(function() {
       setTime(nextText, true);
       pill.style.width = newW + 'px';
+      suffix.classList.remove('hide');
       ticking = true;
       setTimeout(function() { pill.style.width = ''; }, 500);
     }, 350);
