@@ -191,28 +191,3 @@ function closeBooking() {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeBooking();
 });
-
-/* ─────────────────────────────────────────────
-   GRAIN TEXTURE — ruido sutil (canvas)
-───────────────────────────────────────────── */
-(function initGrain() {
-  var canvas = document.createElement('canvas');
-  canvas.width = 200;
-  canvas.height = 200;
-  var ctx = canvas.getContext('2d');
-  var imgData = ctx.createImageData(200, 200);
-  var data = imgData.data;
-  for (var i = 0; i < data.length; i += 4) {
-    var v = (Math.random() * 256) | 0;
-    data[i] = v;
-    data[i + 1] = v;
-    data[i + 2] = v;
-    data[i + 3] = 200;
-  }
-  ctx.putImageData(imgData, 0, 0);
-
-  var el = document.createElement('div');
-  el.id = 'grain';
-  el.style.cssText = 'position:fixed;inset:0;z-index:9999;pointer-events:none;mix-blend-mode:overlay;background-image:url(' + canvas.toDataURL('image/png') + ');background-repeat:repeat;background-size:200px 200px;';
-  document.body.appendChild(el);
-})();
