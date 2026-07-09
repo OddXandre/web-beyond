@@ -187,16 +187,20 @@
 
   pill.addEventListener('click', function() {
     use24h = !use24h;
+    ticking = false;
     var cur = el.querySelector('.ti');
     if (cur) cur.className = 'ti old';
     var nextText = formatTime(new Date(), use24h);
-    setTimeout(function() { setTime(nextText, true); }, 400);
+    setTimeout(function() { setTime(nextText, true); ticking = true; }, 350);
   });
 
+  var ticking = true;
   function tick() {
+    if (!ticking) return;
     setTime(formatTime(new Date(), use24h), false);
   }
   tick();
+  var tickId = setInterval(tick, 1000);
   setInterval(tick, 1000);
 })();
 
