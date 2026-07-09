@@ -188,10 +188,20 @@
   pill.addEventListener('click', function() {
     use24h = !use24h;
     ticking = false;
+
+    var oldW = pill.offsetWidth;
+    pill.style.width = oldW + 'px';
+    void pill.offsetWidth;
+
     var cur = el.querySelector('.ti');
     if (cur) cur.className = 'ti old';
     var nextText = formatTime(new Date(), use24h);
-    setTimeout(function() { setTime(nextText, true); ticking = true; }, 350);
+    setTimeout(function() {
+      setTime(nextText, true);
+      var newW = pill.scrollWidth;
+      pill.style.width = newW + 'px';
+    }, 350);
+    setTimeout(function() { pill.style.width = ''; ticking = true; }, 800);
   });
 
   var ticking = true;
