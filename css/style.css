@@ -178,7 +178,7 @@ img {
 }
 
 .nav-logo-img {
-  height: 20px;
+  height: 14px;
   width: auto;
   display: block;
   filter: invert(var(--logo-invert));
