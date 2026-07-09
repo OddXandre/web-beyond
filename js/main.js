@@ -163,12 +163,26 @@
   }
   el.after(suffix);
 
+  var use24h = true;
+  var pill = document.getElementById('navTime');
+  pill.style.cursor = 'pointer';
+  pill.addEventListener('click', function() {
+    use24h = !use24h;
+    tick();
+  });
+
   function tick() {
     var now = new Date();
-    var h = now.getHours().toString().padStart(2, '0');
+    var h = now.getHours();
     var m = now.getMinutes().toString().padStart(2, '0');
     var s = now.getSeconds().toString().padStart(2, '0');
-    el.textContent = h + ':' + m + ':' + s + ',';
+    if (use24h) {
+      el.textContent = h.toString().padStart(2, '0') + ':' + m + ':' + s + ',';
+    } else {
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = (h % 12 || 12).toString().padStart(2, '0');
+      el.textContent = h12 + ':' + m + ':' + s + ' ' + ampm + ',';
+    }
   }
   tick();
   setInterval(tick, 1000);
