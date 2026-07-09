@@ -115,11 +115,52 @@
   var el = document.getElementById('navTimeText');
   if (!el) return;
 
+  function countryFromTz(tz) {
+    var map = {
+      'Europe/Madrid':'ES','Europe/Paris':'FR','Europe/Berlin':'DE',
+      'Europe/Rome':'IT','Europe/London':'GB','Europe/Lisbon':'PT',
+      'Europe/Amsterdam':'NL','Europe/Brussels':'BE','Europe/Vienna':'AT',
+      'Europe/Warsaw':'PL','Europe/Prague':'CZ','Europe/Budapest':'HU',
+      'Europe/Athens':'GR','Europe/Stockholm':'SE','Europe/Copenhagen':'DK',
+      'Europe/Helsinki':'FI','Europe/Oslo':'NO','Europe/Dublin':'IE',
+      'Europe/Zurich':'CH','Europe/Moscow':'RU','Europe/Istanbul':'TR',
+      'America/New_York':'US','America/Chicago':'US','America/Denver':'US',
+      'America/Los_Angeles':'US','America/Toronto':'CA','America/Vancouver':'CA',
+      'America/Mexico_City':'MX','America/Sao_Paulo':'BR',
+      'America/Argentina/Buenos_Aires':'AR','America/Santiago':'CL',
+      'America/Bogota':'CO','America/Lima':'PE',
+      'Asia/Tokyo':'JP','Asia/Shanghai':'CN','Asia/Hong_Kong':'HK',
+      'Asia/Seoul':'KR','Asia/Singapore':'SG','Asia/Dubai':'AE',
+      'Asia/Kolkata':'IN','Asia/Bangkok':'TH','Asia/Ho_Chi_Minh':'VN',
+      'Asia/Jakarta':'ID','Asia/Manila':'PH','Asia/Taipei':'TW',
+      'Australia/Sydney':'AU','Australia/Melbourne':'AU','Australia/Perth':'AU',
+      'Pacific/Auckland':'NZ',
+      'Africa/Cairo':'EG','Africa/Johannesburg':'ZA','Africa/Lagos':'NG','Africa/Nairobi':'KE'
+    };
+    if (map[tz]) return map[tz];
+    var c = tz.split('/').pop();
+    var cm = {Madrid:'ES',Paris:'FR',Berlin:'DE',Rome:'IT',London:'GB',
+      Lisbon:'PT',Tokyo:'JP',Seoul:'KR',Beijing:'CN',Shanghai:'CN',
+      Singapore:'SG',Sydney:'AU',Auckland:'NZ',Mumbai:'IN',Delhi:'IN',
+      Dubai:'AE',Moscow:'RU',Istanbul:'TR',Sao_Paulo:'BR',Buenos_Aires:'AR'};
+    return cm[c] || '';
+  }
+
+  var langMap = {ES:'es',FR:'fr',DE:'de',IT:'it',GB:'en',PT:'pt',NL:'nl',
+    BE:'nl',AT:'de',PL:'pl',CZ:'cs',HU:'hu',GR:'el',SE:'sv',DK:'da',
+    FI:'fi',NO:'nb',IE:'en',CH:'de',RU:'ru',TR:'tr',US:'en',CA:'en',
+    MX:'es',BR:'pt',AR:'es',CL:'es',CO:'es',PE:'es',JP:'ja',CN:'zh',
+    HK:'zh',KR:'ko',SG:'en',AE:'ar',IN:'hi',TH:'th',VN:'vi',ID:'id',
+    PH:'tl',TW:'zh',AU:'en',NZ:'en',EG:'ar',ZA:'en',NG:'en',KE:'sw'};
+
   var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  var city = tz ? tz.split('/').pop().replace(/_/g, ' ') : '';
+  var cc = countryFromTz(tz);
   var suffix = document.createElement('span');
   suffix.style.cssText = 'opacity:0.55;';
-  suffix.textContent = city;
+  if (cc) {
+    var lang = langMap[cc] || 'en';
+    suffix.textContent = new Intl.DisplayNames(lang, {type:'region'}).of(cc);
+  }
   el.after(suffix);
 
   function tick() {
