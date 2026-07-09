@@ -189,8 +189,7 @@
     use24h = !use24h;
     ticking = false;
 
-    var oldW = pill.offsetWidth;
-    pill.style.width = oldW + 'px';
+    pill.style.width = pill.offsetWidth + 'px';
     void pill.offsetWidth;
 
     var cur = el.querySelector('.ti');
@@ -198,10 +197,9 @@
     var nextText = formatTime(new Date(), use24h);
     setTimeout(function() {
       setTime(nextText, true);
-      var newW = pill.scrollWidth;
-      pill.style.width = newW + 'px';
+      pill.style.width = pill.scrollWidth + 'px';
+      ticking = true;
     }, 350);
-    setTimeout(function() { pill.style.width = ''; ticking = true; }, 800);
   });
 
   var ticking = true;
