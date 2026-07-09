@@ -117,10 +117,11 @@
 
   var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   var city = tz ? tz.split('/').pop().replace(/_/g, ' ') : '';
-  var prefix = document.createElement('span');
-  prefix.style.cssText = 'opacity:0.55;';
-  prefix.textContent = city;
-  el.parentNode.insertBefore(prefix, el);
+  var sep = document.createTextNode(' · ');
+  var suffix = document.createElement('span');
+  suffix.style.cssText = 'opacity:0.55;';
+  suffix.textContent = city;
+  el.after(sep, suffix);
 
   function tick() {
     var now = new Date();
