@@ -189,7 +189,17 @@
     use24h = !use24h;
     ticking = false;
 
-    pill.style.maxWidth = pill.offsetWidth + 'px';
+    var oldW = pill.offsetWidth;
+
+    var clone = pill.cloneNode(true);
+    var cloneTime = clone.querySelector('#navTimeText');
+    cloneTime.innerHTML = '<span class="ti">' + formatTime(new Date(), use24h) + '</span>';
+    clone.style.cssText = 'position:fixed;visibility:hidden;';
+    pill.parentNode.appendChild(clone);
+    var newW = clone.offsetWidth;
+    clone.parentNode.removeChild(clone);
+
+    pill.style.width = oldW + 'px';
     void pill.offsetWidth;
 
     var cur = el.querySelector('.ti');
@@ -197,9 +207,9 @@
     var nextText = formatTime(new Date(), use24h);
     setTimeout(function() {
       setTime(nextText, true);
-      pill.style.maxWidth = pill.scrollWidth + 'px';
+      pill.style.width = newW + 'px';
       ticking = true;
-      setTimeout(function() { pill.style.maxWidth = ''; }, 500);
+      setTimeout(function() { pill.style.width = ''; }, 500);
     }, 350);
   });
 
