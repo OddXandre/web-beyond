@@ -109,6 +109,22 @@
 })();
 
 /* ─────────────────────────────────────────────
+   NAV TIME — hora local del usuario
+───────────────────────────────────────────── */
+(function initNavTime() {
+  var el = document.getElementById('navTimeText');
+  if (!el) return;
+  function tick() {
+    var now = new Date();
+    var h = now.getHours().toString().padStart(2, '0');
+    var m = now.getMinutes().toString().padStart(2, '0');
+    el.textContent = h + ':' + m;
+  }
+  tick();
+  setInterval(tick, 10000);
+})();
+
+/* ─────────────────────────────────────────────
    AÑO DINÁMICO EN EL FOOTER
 ───────────────────────────────────────────── */
 (function initYear() {
