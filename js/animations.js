@@ -23,17 +23,17 @@
   }, '-=0.4');
 
   tl.from('.intro-sub', {
-    y: 20,
+    x: -24,
     opacity: 0,
     duration: 0.9,
   }, '-=0.55');
 
   tl.from('.intro-actions .btn', {
-    y: 24,
+    x: 24,
     opacity: 0,
     duration: 0.7,
     stagger: 0.15,
-  }, '-=0.35');
+  }, '-=0.3');
 
   /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
   gsap.from('.workflow-card', {
@@ -87,5 +87,53 @@
     opacity: 0,
     duration: 0.6,
     ease: EASE_SMOOTH,
+  });
+
+  /* ─── SMART NAVBAR ─── */
+  var nav = document.querySelector('.nav');
+  if (nav) {
+    var lastScroll = 0;
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var currentScroll = window.scrollY;
+          if (currentScroll > lastScroll && currentScroll > 100) {
+            nav.classList.add('nav-hidden');
+          } else {
+            nav.classList.remove('nav-hidden');
+          }
+          lastScroll = currentScroll;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  /* ─── MAGNETIC BUTTONS ─── */
+  var btns = document.querySelectorAll('.intro-actions .btn');
+  btns.forEach(function (btn) {
+    btn.addEventListener('mousemove', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var x = (e.clientX - rect.left - rect.width / 2) * 0.12;
+      var y = (e.clientY - rect.top - rect.height / 2) * 0.12;
+      gsap.to(btn, {
+        x: x,
+        y: y,
+        duration: 0.5,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    });
+    btn.addEventListener('mouseleave', function () {
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.6,
+        ease: 'elastic.out(1, 0.3)',
+        overwrite: 'auto',
+      });
+    });
   });
 })();
