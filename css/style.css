@@ -325,15 +325,17 @@ img {
   gap: 7px;
   box-shadow: var(--shadow-nav);
   overflow: hidden;
+  box-sizing: border-box;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  transition: max-width 0.45s var(--ease-soft), opacity 0.3s var(--ease-soft);
   width: fit-content;
-  max-width: 500px;
+  transition: width 0.45s var(--ease-soft), opacity 0.3s var(--ease-soft);
+  width: fit-content;
+  transition: width 0.45s var(--ease-soft), opacity 0.3s var(--ease-soft);
 }
 
 .time-pill svg {
