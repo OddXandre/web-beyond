@@ -451,7 +451,7 @@ a.btn {
 
 .hero-logo-img {
   display: block;
-  height: clamp(40px, 9vw, 120px);
+  height: clamp(36px, 8vw, 100px);
   width: auto;
   margin: 0 auto;
   filter: invert(var(--logonombre-invert));
