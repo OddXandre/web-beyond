@@ -166,26 +166,34 @@
   var use24h = true;
   var pill = document.getElementById('navTime');
   pill.style.cursor = 'pointer';
-  pill.addEventListener('click', function() {
-    use24h = !use24h;
-    pill.classList.remove('toggle-anim');
-    void pill.offsetWidth;
-    pill.classList.add('toggle-anim');
-    tick();
-  });
 
-  function tick() {
-    var now = new Date();
+  function formatTime(now, is24h) {
     var h = now.getHours();
     var m = now.getMinutes().toString().padStart(2, '0');
     var s = now.getSeconds().toString().padStart(2, '0');
-    if (use24h) {
-      el.textContent = h.toString().padStart(2, '0') + ':' + m + ':' + s + ',';
-    } else {
-      var ampm = h >= 12 ? 'PM' : 'AM';
-      var h12 = (h % 12 || 12).toString().padStart(2, '0');
-      el.textContent = h12 + ':' + m + ':' + s + ' ' + ampm + ',';
-    }
+    if (is24h) return h.toString().padStart(2, '0') + ':' + m + ':' + s + ',';
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var h12 = (h % 12 || 12).toString().padStart(2, '0');
+    return h12 + ':' + m + ':' + s + ' ' + ampm + ',';
+  }
+
+  function setTime(text, anim) {
+    el.innerHTML = '';
+    var s = document.createElement('span');
+    s.className = 'ti' + (anim ? ' new' : '');
+    s.textContent = text;
+    el.appendChild(s);
+  }
+
+  pill.addEventListener('click', function() {
+    use24h = !use24h;
+    var cur = el.querySelector('.ti');
+    if (cur) cur.className = 'ti old';
+    setTime(formatTime(new Date(), use24h), true);
+  });
+
+  function tick() {
+    setTime(formatTime(new Date(), use24h), false);
   }
   tick();
   setInterval(tick, 1000);

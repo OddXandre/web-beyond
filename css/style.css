@@ -339,17 +339,29 @@ img {
 }
 
 #navTimeText {
-  transition: transform 0.4s var(--ease-soft);
+  display: block;
+  position: relative;
+  height: 1.4em;
+  overflow: hidden;
 }
 
-.time-pill.toggle-anim #navTimeText {
-  animation: timePulse 0.5s var(--ease-soft);
+#navTimeText .ti {
+  display: block;
+  transition: transform 0.5s var(--ease-soft), opacity 0.4s var(--ease-soft);
 }
 
-@keyframes timePulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.96); }
-  100% { transform: scale(1); }
+#navTimeText .ti.old {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+#navTimeText .ti.new {
+  animation: timeSlideUp 0.5s var(--ease-soft);
+}
+
+@keyframes timeSlideUp {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 .nav-actions {
