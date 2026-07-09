@@ -177,25 +177,6 @@ img {
   flex-shrink: 0;
 }
 
-.nav-time {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  height: 28px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--color-text-muted);
-  border-right: 1px solid var(--color-nav-border);
-  white-space: nowrap;
-}
-
-.nav-time svg {
-  opacity: 0.6;
-  flex-shrink: 0;
-}
-
 .nav-logo-img {
   height: 22px;
   width: auto;
@@ -323,6 +304,37 @@ img {
 
 .lang-toggle:active {
   transform: scale(0.95);
+}
+
+/* ─── TIME PILL (flotante izquierda) ─── */
+.time-pill {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 101;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--color-nav-border);
+  background: var(--color-nav-bg);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  color: var(--color-text-muted);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: var(--shadow-nav);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: opacity 0.3s var(--ease-soft);
+}
+
+.time-pill svg {
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
 .nav-actions {
