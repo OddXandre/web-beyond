@@ -72,7 +72,7 @@
   --radius-full: 30px;
   --max-width: 1200px;
   --padding-x: 24px;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -208,7 +208,7 @@ img {
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  transition: color 0.35s var(--ease-soft), background-color 0.35s var(--ease-soft);
+  transition: color 0.2s var(--ease-soft), background-color 0.2s var(--ease-soft);
 }
 
 .nav-socials a:hover {
@@ -235,9 +235,9 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-nav);
-  transition: transform 0.5s var(--ease-out),
-               background-color 0.5s var(--ease-soft),
-               border-color 0.5s var(--ease-soft);
+  transition: transform 0.3s var(--ease-out),
+              background-color 0.35s var(--ease-soft),
+              border-color 0.35s var(--ease-soft);
 }
 
 .theme-toggle:hover {
@@ -250,7 +250,7 @@ img {
 
 .theme-toggle svg {
   position: absolute;
-  transition: opacity 0.4s var(--ease-soft), transform 0.5s var(--ease-out);
+  transition: opacity 0.3s var(--ease-soft), transform 0.4s var(--ease-out);
 }
 
 [data-theme='light'] .theme-icon-sun {
@@ -293,9 +293,9 @@ img {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  transition: transform 0.5s var(--ease-out),
-               background-color 0.5s var(--ease-soft),
-               border-color 0.5s var(--ease-soft);
+  transition: transform 0.3s var(--ease-out),
+              background-color 0.35s var(--ease-soft),
+              border-color 0.35s var(--ease-soft);
 }
 
 .lang-toggle:hover {
@@ -347,11 +347,11 @@ img {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  transition: transform 0.4s var(--ease-out),
-               box-shadow 0.5s var(--ease-soft),
-               background-color 0.5s var(--ease-soft),
-               color 0.5s var(--ease-soft),
-               border-color 0.5s var(--ease-soft);
+  transition: transform 0.25s var(--ease-out),
+              box-shadow 0.35s var(--ease-soft),
+              background-color 0.35s var(--ease-soft),
+              color 0.35s var(--ease-soft),
+              border-color 0.35s var(--ease-soft);
 }
 
 /* Asegura que el botón entero sea la zona de click, incluso como <a> */
@@ -398,7 +398,7 @@ a.btn {
 .btn-dark:hover::after {
   opacity: 1;
   transform: translateX(120%);
-  transition: transform 0.7s var(--ease-out), opacity 0.3s var(--ease-soft);
+  transition: transform 0.6s var(--ease-out), opacity 0.2s var(--ease-soft);
 }
 
 .btn-light {
@@ -430,7 +430,7 @@ a.btn {
 .btn-light:hover::after {
   opacity: 1;
   transform: translateX(120%);
-  transition: transform 0.7s var(--ease-out), opacity 0.3s var(--ease-soft);
+  transition: transform 0.6s var(--ease-out), opacity 0.2s var(--ease-soft);
 }
 
 /* ─── INTRO / HERO ─── */
@@ -538,7 +538,7 @@ a.btn {
   overflow: hidden;
   border: 1px solid var(--color-border);
   cursor: default;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform 0.4s var(--ease-out);
 }
 
 /* tiles abstractos con gradientes sutiles y textura interna */
@@ -592,10 +592,10 @@ a.btn {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform 0.5s var(--ease-out),
-               box-shadow 0.5s var(--ease-soft),
-               border-color 0.5s var(--ease-soft),
-               background-color 0.5s var(--ease-soft);
+  transition: transform 0.4s var(--ease-out),
+              box-shadow 0.4s var(--ease-soft),
+              border-color 0.4s var(--ease-soft),
+              background-color 0.35s var(--ease-soft);
 }
 
 .workflow-card:hover {
@@ -669,12 +669,7 @@ a.btn {
   line-height: 1.15;
   color: var(--color-text);
   position: relative;
-  display: inline-block;
-  transition: color 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-}
-
-.footer-email:hover {
-  transform: translateY(-1px);
+  transition: color 0.35s var(--ease-out);
 }
 
 .footer-email-text {
@@ -682,7 +677,7 @@ a.btn {
   background-size: 0% 1.5px;
   background-position: 50% 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.5s var(--ease-out);
+  transition: background-size 0.4s var(--ease-out);
 }
 
 .footer-email:hover .footer-email-text {
