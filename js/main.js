@@ -189,7 +189,8 @@
     use24h = !use24h;
     var cur = el.querySelector('.ti');
     if (cur) cur.className = 'ti old';
-    setTime(formatTime(new Date(), use24h), true);
+    var nextText = formatTime(new Date(), use24h);
+    setTimeout(function() { setTime(nextText, true); }, 400);
   });
 
   function tick() {
