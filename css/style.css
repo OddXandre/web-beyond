@@ -339,7 +339,7 @@ img {
 }
 
 .time-pill:hover {
-  transform: scale(1.08) rotate(8deg);
+  transform: scale(1.08);
 }
 
 .time-pill svg {
