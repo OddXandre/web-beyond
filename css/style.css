@@ -335,7 +335,11 @@ img {
   width: fit-content;
   transition: width 0.45s var(--ease-soft), opacity 0.3s var(--ease-soft);
   width: fit-content;
-  transition: width 0.45s var(--ease-soft), opacity 0.3s var(--ease-soft);
+  transition: width 0.45s var(--ease-soft), transform 0.5s var(--ease-out), opacity 0.3s var(--ease-soft);
+}
+
+.time-pill:hover {
+  transform: scale(1.08) rotate(8deg);
 }
 
 .time-pill svg {
