@@ -127,7 +127,7 @@
     var h = now.getHours().toString().padStart(2, '0');
     var m = now.getMinutes().toString().padStart(2, '0');
     var s = now.getSeconds().toString().padStart(2, '0');
-    el.textContent = h + ',' + m + ':' + s;
+    el.textContent = h + ':' + m + ':' + s + ',';
   }
   tick();
   setInterval(tick, 1000);
