@@ -117,7 +117,7 @@
 
   var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   var city = tz ? tz.split('/').pop().replace(/_/g, ' ') : '';
-  var sep = document.createTextNode(' · ');
+  var sep = document.createTextNode(', ');
   var suffix = document.createElement('span');
   suffix.style.cssText = 'opacity:0.55;';
   suffix.textContent = city;
