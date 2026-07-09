@@ -9,59 +9,59 @@
 /* ─── TEMA CLARO (default) ─── */
 :root,
 [data-theme='light'] {
-  --color-text: #1d1d1f;
-  --color-text-muted: rgba(29, 29, 31, 0.56);
-  --color-text-label: rgba(29, 29, 31, 0.44);
-  --color-bg: #f5f5f7;
-  --color-surface: #e8e8ed;
-  --color-surface-2: #e2e2e5;
-  --color-border: rgba(29, 29, 31, 0.08);
-  --color-border-strong: rgba(29, 29, 31, 0.16);
-  --color-accent: #0071e3;
+  --color-text: #0a0a0a;
+  --color-text-muted: rgba(10, 10, 10, 0.58);
+  --color-text-label: rgba(10, 10, 10, 0.5);
+  --color-bg: #ffffff;
+  --color-surface: #f4f2ee;
+  --color-surface-2: #eceae5;
+  --color-border: rgba(10, 10, 10, 0.08);
+  --color-border-strong: rgba(10, 10, 10, 0.14);
+  --color-accent: #0a0a0a;
   --color-on-accent: #ffffff;
-  --color-nav-bg: rgba(245, 245, 247, 0.75);
-  --color-nav-border: rgba(29, 29, 31, 0.06);
-  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.06);
-  --nav-specular: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, transparent 50%);
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 12px 32px -12px rgba(0, 0, 0, 0.12);
+  --color-nav-bg: rgba(255, 255, 255, 0.55);
+  --color-nav-border: rgba(10, 10, 10, 0.04);
+  --shadow-nav: 0 8px 32px rgba(10, 10, 10, 0.06);
+  --nav-specular: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  --shadow-card: 0 1px 2px rgba(10, 10, 10, 0.04);
+  --shadow-card-hover: 0 24px 48px -16px rgba(10, 10, 10, 0.16);
   --logo-invert: 1;
   --logonombre-invert: 0;
-  --tile-grad-a: linear-gradient(145deg, #e8e8ed 0%, #dcdce0 100%);
-  --tile-grad-b: linear-gradient(145deg, #e2e2e5 0%, #d0d0d5 100%);
-  --tile-grad-c: linear-gradient(145deg, #ececf0 0%, #dedee2 100%);
-  --tile-grad-d: linear-gradient(145deg, #e6e6ea 0%, #d4d4d9 100%);
-  --selection-bg: #0071e3;
+  --tile-grad-a: linear-gradient(145deg, #f4f2ee 0%, #e3e0da 100%);
+  --tile-grad-b: linear-gradient(145deg, #efece6 0%, #d9d5cd 100%);
+  --tile-grad-c: linear-gradient(145deg, #f7f5f1 0%, #e8e5df 100%);
+  --tile-grad-d: linear-gradient(145deg, #eceae5 0%, #d2cecf 100%);
+  --selection-bg: rgba(10, 10, 10, 0.9);
   --selection-text: #ffffff;
   color-scheme: light;
 }
 
 /* ─── TEMA OSCURO ─── */
 [data-theme='dark'] {
-  --color-text: #f5f5f7;
-  --color-text-muted: rgba(245, 245, 247, 0.56);
-  --color-text-label: rgba(245, 245, 247, 0.44);
-  --color-bg: #000000;
-  --color-surface: #1c1c1e;
-  --color-surface-2: #2c2c2e;
-  --color-border: rgba(245, 245, 247, 0.1);
-  --color-border-strong: rgba(245, 245, 247, 0.18);
-  --color-accent: #0071e3;
-  --color-on-accent: #ffffff;
-  --color-nav-bg: rgba(0, 0, 0, 0.65);
-  --color-nav-border: rgba(245, 245, 247, 0.08);
-  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --nav-specular: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+  --color-text: #f5f5f5;
+  --color-text-muted: rgba(245, 245, 245, 0.58);
+  --color-text-label: rgba(245, 245, 245, 0.5);
+  --color-bg: #0a0a0a;
+  --color-surface: #161616;
+  --color-surface-2: #1e1e1e;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-accent: #f5f5f5;
+  --color-on-accent: #0a0a0a;
+  --color-nav-bg: rgba(15, 15, 15, 0.50);
+  --color-nav-border: rgba(255, 255, 255, 0.08);
+  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --nav-specular: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 50%);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 24px 48px -16px rgba(0, 0, 0, 0.7);
   --logo-invert: 0;
   --logonombre-invert: 1;
-  --tile-grad-a: linear-gradient(145deg, #1c1c1e 0%, #2a2a2c 100%);
-  --tile-grad-b: linear-gradient(145deg, #222224 0%, #323234 100%);
-  --tile-grad-c: linear-gradient(145deg, #262628 0%, #363638 100%);
-  --tile-grad-d: linear-gradient(145deg, #1a1a1c 0%, #28282a 100%);
-  --selection-bg: #0071e3;
-  --selection-text: #ffffff;
+  --tile-grad-a: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
+  --tile-grad-b: linear-gradient(145deg, #161616 0%, #2a2a2a 100%);
+  --tile-grad-c: linear-gradient(145deg, #1e1e1e 0%, #2c2c2c 100%);
+  --tile-grad-d: linear-gradient(145deg, #181818 0%, #242424 100%);
+  --selection-bg: rgba(245, 245, 245, 0.92);
+  --selection-text: #0a0a0a;
   color-scheme: dark;
 }
 
@@ -85,8 +85,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: 17px;
-  letter-spacing: -0.016em;
+  font-size: 16px;
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.5;
@@ -155,22 +154,18 @@ img {
   background: var(--color-nav-bg);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   backdrop-filter: blur(40px) saturate(180%);
-  border-radius: 980px;
+  border-radius: 30px;
   box-shadow: var(--shadow-nav);
   width: max-content;
-  transition: transform 0.5s var(--ease-out), background-color 0.35s var(--ease-soft);
+  transition: background-color 0.35s var(--ease-soft);
   outline: 1px solid var(--color-nav-border);
   outline-offset: -1px;
-}
-
-.nav-hidden {
-  transform: translateX(-50%) translateY(calc(-100% - 32px));
 }
 .nav::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 980px;
+  border-radius: 30px;
   background: var(--nav-specular);
   pointer-events: none;
 }
@@ -338,12 +333,12 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 22px;
-  border-radius: 980px;
+  padding: 8px 20px;
+  border-radius: 30px;
   font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: -0.016em;
+  letter-spacing: -0.4px;
   line-height: 1;
   border: none;
   cursor: pointer;
@@ -353,6 +348,7 @@ img {
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   transition: transform 0.4s var(--ease-out),
+               box-shadow 0.5s var(--ease-soft),
                background-color 0.5s var(--ease-soft),
                color 0.5s var(--ease-soft),
                border-color 0.5s var(--ease-soft);
@@ -396,7 +392,7 @@ a.btn {
 
 .btn-dark:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -10px rgba(0, 113, 227, 0.35);
+  box-shadow: 0 12px 28px -10px rgba(10, 10, 10, 0.45);
 }
 
 .btn-dark:hover::after {
@@ -406,24 +402,40 @@ a.btn {
 }
 
 .btn-light {
-  background: transparent;
-  color: var(--color-accent);
+  background: var(--color-surface);
+  color: var(--color-text);
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-border);
 }
 
 .btn-light:hover {
   transform: translateY(-2px);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-  border-color: var(--color-accent);
-  box-shadow: none;
+  background: var(--color-surface-2);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 12px 28px -14px rgba(10, 10, 10, 0.25);
+}
+
+.btn-light::after {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+}
+
+.btn-light:hover::after {
+  opacity: 1;
+  transform: translateX(120%);
+  transition: transform 0.7s var(--ease-out), opacity 0.3s var(--ease-soft);
 }
 
 /* ─── INTRO / HERO ─── */
 .intro {
-  padding: 180px 24px 0;
+  padding: 160px 24px 0;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
@@ -572,21 +584,24 @@ a.btn {
 .workflow-card {
   flex: 1;
   max-width: 280px;
-  border-radius: 8px;
+  border-radius: 18px;
   padding: 32px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 16px;
   transition: transform 0.5s var(--ease-out),
+               box-shadow 0.5s var(--ease-soft),
                border-color 0.5s var(--ease-soft),
                background-color 0.5s var(--ease-soft);
 }
 
 .workflow-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-strong);
 }
 
 .wf-number {
@@ -863,7 +878,7 @@ a.btn {
   .modal-content {
     width: 92%;
     height: 80%;
-  border-radius: 8px;
+    border-radius: 14px;
     max-height: 90vh;
   }
   .modal-close {
