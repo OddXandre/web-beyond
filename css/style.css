@@ -338,18 +338,18 @@ img {
   flex-shrink: 0;
 }
 
-.time-pill span {
-  transition: transform 0.35s var(--ease-soft), opacity 0.35s var(--ease-soft);
+#navTimeText {
+  transition: transform 0.4s var(--ease-soft);
 }
 
-.time-pill.toggle-anim span {
-  animation: timePulse 0.4s var(--ease-soft);
+.time-pill.toggle-anim #navTimeText {
+  animation: timePulse 0.5s var(--ease-soft);
 }
 
 @keyframes timePulse {
-  0% { transform: scale(1); opacity: 1; }
-  40% { transform: scale(0.92); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+  0% { transform: scale(1); }
+  50% { transform: scale(0.96); }
+  100% { transform: scale(1); }
 }
 
 .nav-actions {
