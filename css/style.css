@@ -366,6 +366,7 @@ img {
 }
 
 @media (max-width: 768px) {
+  .time-pill { display: none; }
   .btn-label-long {
     display: none;
   }
