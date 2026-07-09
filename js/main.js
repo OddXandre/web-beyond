@@ -168,6 +168,9 @@
   pill.style.cursor = 'pointer';
   pill.addEventListener('click', function() {
     use24h = !use24h;
+    pill.classList.remove('toggle-anim');
+    void pill.offsetWidth;
+    pill.classList.add('toggle-anim');
     tick();
   });
 
