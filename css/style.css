@@ -619,19 +619,11 @@ a.btn {
   display: flex;
   gap: 14px;
   width: max-content;
-  will-change: transform;
-  animation: marqueeScroll 28s linear infinite;
-}
 
 @media (max-width: 768px) {
-  .marquee-track {
-    animation-duration: 22s;
-  }
 }
 
 @keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 .marquee-item {

@@ -45,14 +45,6 @@
     ease: EASE_SOFT,
   }, '-=0.4');
 
-  // 5 — Marquee
-  tl.from('.marquee-section', {
-    y: 24,
-    opacity: 0,
-    duration: 1.0,
-    ease: 'expo.out',
-  }, 1.3);
-
   /* ─── WORKFLOW: reveal en scroll ─── */
   gsap.from('.workflow-card', {
     scrollTrigger: {
