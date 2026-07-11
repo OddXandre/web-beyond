@@ -75,7 +75,7 @@
     if (saved === 'en' || saved === 'es') lang = saved;
   } catch (e) {}
 
-  function swap(l) {
+  function setLang(l) {
     lang = l;
     var t = i18n[l];
     if (!t) return;
@@ -93,18 +93,27 @@
     try { localStorage.setItem('beyond-lang', l); } catch (e) {}
   }
 
-  function apply(l) {
-    document.body.classList.add('is-translating');
-    setTimeout(function () {
-      swap(l);
-      document.body.classList.remove('is-translating');
-    }, 200);
+  function animateLang(l) {
+    var els = document.querySelectorAll('[data-i18n]');
+    gsap.to(els, {
+      opacity: 0,
+      duration: 0.08,
+      ease: 'none',
+      onComplete: function () {
+        setLang(l);
+        gsap.to(els, {
+          opacity: 1,
+          duration: 0.08,
+          ease: 'none'
+        });
+      }
+    });
   }
 
-  apply(lang);
+  setLang(lang);
 
   btn.addEventListener('click', function () {
-    apply(lang === 'es' ? 'en' : 'es');
+    animateLang(lang === 'es' ? 'en' : 'es');
   });
 })();
 

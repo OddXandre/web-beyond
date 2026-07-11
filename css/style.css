@@ -81,6 +81,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
   scrollbar-gutter: stable;
+  background: var(--color-bg);
 }
 
 body {
@@ -91,10 +92,6 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft);
-}
-
-body.is-translating {
-  opacity: 0;
 }
 
 a {
