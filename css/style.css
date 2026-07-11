@@ -155,7 +155,6 @@ img {
               1px 0 2px -1px rgba(255,45,85,0.08);
   width: max-content;
   isolation: isolate;
-  will-change: transform;
   transition: background-color 0.35s var(--ease-soft);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   backdrop-filter: blur(12px) saturate(180%);
@@ -244,9 +243,6 @@ img {
   height: 44px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  will-change: transform;
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  backdrop-filter: blur(12px) saturate(180%);
   opacity: 0;
   animation: glassIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
   color: var(--color-text);
@@ -301,9 +297,6 @@ img {
   height: 44px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  will-change: transform;
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  backdrop-filter: blur(12px) saturate(180%);
   opacity: 0;
   animation: glassIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s forwards;
   color: var(--color-text);
@@ -340,9 +333,6 @@ img {
   padding: 0 16px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  will-change: transform;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
   opacity: 0;
   animation: glassIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.12s forwards;
   color: var(--color-text-muted);
@@ -634,7 +624,6 @@ a.btn {
   overflow: hidden;
   border: 1px solid var(--color-border);
   cursor: default;
-  contain: paint layout style;
   transition: transform 0.5s var(--ease-out);
 }
 

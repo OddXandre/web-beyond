@@ -261,7 +261,6 @@ lenisScript.onload = function () {
     window.gsap.ticker.add(function (time) {
       window.lenis.raf(time * 1000);
     });
-    window.gsap.ticker.lagSmoothing(0);
     window.lenis.on('scroll', window.ScrollTrigger.update);
   } else {
     function raf(time) {
@@ -280,7 +279,7 @@ document.head.appendChild(lenisScript);
 (function initMarquee() {
   var track = document.getElementById('marqueeTrack');
   if (!track) return;
-  var set = 16;
+  var set = 8;
   var html = '';
   for (var i = 0; i < set; i++) {
     html += '<div class="marquee-item" aria-hidden="true"></div>';
