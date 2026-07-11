@@ -1057,11 +1057,11 @@ a.btn {
 
 .modal-close {
   position: absolute;
-  top: -48px;
-  right: 0;
+  top: 12px;
+  right: -44px;
   z-index: 1010;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
@@ -1078,9 +1078,9 @@ a.btn {
   transform: scale(1.1);
 }
 
-.modal-content::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+.modal-close svg {
+  width: 12px;
+  height: 12px;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -1116,11 +1116,9 @@ a.btn {
   .modal-close {
     top: 8px;
     right: 8px;
-    width: 32px;
-    height: 32px;
   }
   .modal-close svg {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 }
