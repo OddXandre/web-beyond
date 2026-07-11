@@ -82,6 +82,14 @@
     ease: EASE_SOFT,
   }, '-=0.4');
 
+  // 7 — Marquee como broche final
+  tl.from('.marquee-section', {
+    y: 24,
+    opacity: 0,
+    duration: 1.0,
+    ease: EASE_UI,
+  }, '-=0.2');
+
   /* ─── WORKFLOW: reveal en scroll ─── */
   gsap.from('.workflow-card', {
     scrollTrigger: {
