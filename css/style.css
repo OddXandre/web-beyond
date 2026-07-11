@@ -619,6 +619,13 @@ a.btn {
   display: flex;
   gap: 14px;
   width: max-content;
+  will-change: transform;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .marquee-item {
@@ -967,6 +974,9 @@ a.btn {
   .marquee-item {
     width: 280px;
     height: 170px;
+  }
+  .marquee-track {
+    animation-duration: 22s;
   }
   .modal-content {
     width: 92%;
