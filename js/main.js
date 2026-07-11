@@ -222,7 +222,6 @@ if (cc) {
     setTime(formatTime(new Date(), use24h), false);
   }
   tick();
-  var tickId = setInterval(tick, 1000);
   setInterval(tick, 1000);
 })();
 
