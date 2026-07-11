@@ -10,52 +10,33 @@
   /* ─── MASTER TIMELINE ─── */
   var tl = gsap.timeline({ delay: 0.1 });
 
-  // 1 — NAV cae con autoridad
-  tl.from('.nav', {
-    y: -48,
-    opacity: 0,
-    duration: 0.9,
-    ease: EASE_UI,
-  });
+  // 1 — Glass elements: solo opacity (backdrop-filter + transform = jank)
+  tl.from('.nav', { opacity: 0, duration: 0.7, ease: EASE_UI });
 
-  // 2 — Contexto: pill desde izquierda, toggles desde derecha
   tl.from('.time-pill', {
-    x: -14,
-    y: -12,
     opacity: 0,
-    scale: 0.93,
-    duration: 0.8,
+    duration: 0.7,
     ease: EASE_UI,
     onComplete: function () {
       var el = document.querySelector('.time-pill');
       if (el) el.classList.add('pill-ready');
     },
-  }, '-=0.68');
+  }, '-=0.5');
 
-  tl.from('.theme-toggle', {
-    scale: 0.85,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'back.out(1.1)',
-  }, '-=0.62');
+  tl.from('.theme-toggle', { opacity: 0, duration: 0.5, ease: EASE_UI }, '-=0.45');
 
-  tl.from('.lang-toggle', {
-    scale: 0.85,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'back.out(1.1)',
-  }, '-=0.48');
+  tl.from('.lang-toggle', { opacity: 0, duration: 0.5, ease: EASE_UI }, '-=0.32');
 
-  // 3 — Detalles de la nav escalonados
+  // 2 — Nav children: estos SÍ pueden moverse (no tienen backdrop-filter)
   tl.from('.nav-logo, .nav-socials, .nav-actions', {
     y: -8,
     opacity: 0,
     duration: 0.4,
     stagger: 0.05,
     ease: EASE_SOFT,
-  }, '-=0.3');
+  }, '-=0.55');
 
-  // 4 — HERO: el gran momento. Slow, dramatic, desde abajo.
+  // 3 — Hero reveal (sin backdrop-filter, full transform)
   tl.from('.intro-heading .line-inner', {
     yPercent: 130,
     opacity: 0,
@@ -64,7 +45,7 @@
     ease: EASE_HERO,
   }, '-=0.15');
 
-  // 5 — Subtítulo entra mientras el hero aún se revela
+  // 4 — Subtítulo
   tl.from('.intro-sub', {
     y: 28,
     opacity: 0,
@@ -72,7 +53,7 @@
     ease: EASE_SOFT,
   }, '-=0.6');
 
-  // 6 — Botones con micro-scale, escalonados
+  // 5 — Botones
   tl.from('.intro-actions .btn', {
     y: 24,
     opacity: 0,
@@ -82,7 +63,7 @@
     ease: EASE_SOFT,
   }, '-=0.4');
 
-  // 7 — Marquee sale temprano, durante el hero
+  // 6 — Marquee
   tl.from('.marquee-section', {
     y: 24,
     opacity: 0,
