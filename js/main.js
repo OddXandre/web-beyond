@@ -89,7 +89,7 @@
     var og = document.querySelector('meta[property="og:description"]');
     if (og && t.desc) og.setAttribute('content', t.desc);
     document.documentElement.setAttribute('lang', l);
-    btn.textContent = l === 'es' ? 'EN' : 'ES';
+    btn.textContent = l === 'es' ? 'ES' : 'EN';
     try { localStorage.setItem('beyond-lang', l); } catch (e) {}
   }
 
