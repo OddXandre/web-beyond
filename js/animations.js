@@ -82,13 +82,13 @@
     ease: EASE_SOFT,
   }, '-=0.4');
 
-  // 7 — Marquee como broche final
+  // 7 — Marquee sale temprano, durante el hero
   tl.from('.marquee-section', {
     y: 24,
     opacity: 0,
     duration: 1.0,
     ease: EASE_UI,
-  }, '-=0.2');
+  }, 1.3);
 
   /* ─── WORKFLOW: reveal en scroll ─── */
   gsap.from('.workflow-card', {
