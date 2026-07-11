@@ -619,6 +619,7 @@ a.btn {
   display: flex;
   gap: 14px;
   width: max-content;
+}
 
 .marquee-item {
   width: 360px;
