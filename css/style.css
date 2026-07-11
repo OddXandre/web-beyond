@@ -80,8 +80,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
-  scrollbar-gutter: stable;
+  overflow-y: scroll;
   background: var(--color-bg);
+}
+::-webkit-scrollbar {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 
 body {
