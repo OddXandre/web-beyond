@@ -620,12 +620,6 @@ a.btn {
   gap: 14px;
   width: max-content;
 
-@media (max-width: 768px) {
-}
-
-@keyframes marqueeScroll {
-}
-
 .marquee-item {
   width: 360px;
   height: 220px;
