@@ -27,38 +27,6 @@
 </head>
 <body>
 
-<!-- ═══ LIQUID GLASS SVG FILTER ═══ -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <!-- Refraction map: turbulence → displacement -->
-    <filter id="liquid-glass" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
-      <!-- Base turbulence for organic warping -->
-      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.012" numOctaves="3" seed="2" result="turb"/>
-      <!-- Remap turbulence to displacement range -->
-      <feComponentTransfer in="turb" result="displace">
-        <feFuncR type="linear" slope="0.06" intercept="-0.03"/>
-        <feFuncG type="linear" slope="0.06" intercept="-0.03"/>
-      </feComponentTransfer>
-      <!-- Edge-focused distortion via radial gradient mask -->
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="sharp"/>
-      <feComposite in="displace" in2="sharp" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" result="masked"/>
-    </filter>
-
-    <!-- Chromatic edge dispersion -->
-    <filter id="liquid-chromatic" color-interpolation-filters="sRGB" x="-10%" y="-10%" width="120%" height="120%">
-      <feOffset in="SourceGraphic" dx="1.2" dy="0" result="r"/>
-      <feOffset in="SourceGraphic" dx="-1.2" dy="0" result="b"/>
-      <feOffset in="SourceGraphic" dx="0" dy="0" result="g"/>
-      <feColorMatrix in="r" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0" result="red"/>
-      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 0.35 0" result="green"/>
-      <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 0.35 0" result="blue"/>
-      <feBlend in="red" in2="green" mode="screen" result="rg"/>
-      <feBlend in="rg" in2="blue" mode="screen" result="rgb"/>
-      <feBlend in="SourceGraphic" in2="rgb" mode="screen"/>
-    </filter>
-  </defs>
-</svg>
-
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal" onclick="if(event.target===this)closeBooking()">
     <div class="modal-content">
@@ -72,7 +40,7 @@
   </div>
 
   <!-- NAV -->
-  <nav class="nav liquid-glass">
+  <nav class="nav">
     <a href="#" class="nav-logo" aria-label="Beyond — inicio">
       <img src="images/logo.png" alt="Beyond" class="nav-logo-img" height="22">
     </a>
@@ -95,13 +63,13 @@
   </nav>
 
   <!-- THEME TOGGLE (flotante, fuera de la nav) -->
-  <button class="theme-toggle liquid-glass" id="themeToggle" aria-label="Cambiar tema">
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
-  <button class="lang-toggle liquid-glass" id="langToggle" aria-label="Switch language">EN</button>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
 
-  <div class="time-pill liquid-glass" id="navTime">
+  <div class="time-pill" id="navTime">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span id="navTimeText">00:00</span>
   </div>
