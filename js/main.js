@@ -302,7 +302,9 @@ function openBooking() {
   var modal = document.getElementById('bookingModal');
   if (!modal) return;
   modal.classList.add('active');
+  var scrollbar = window.innerWidth - document.documentElement.clientWidth;
   document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.paddingRight = scrollbar + 'px';
 }
 
 function closeBooking() {
@@ -313,6 +315,7 @@ function closeBooking() {
   setTimeout(function () {
     modal.classList.remove('closing');
     document.documentElement.style.overflow = '';
+    document.documentElement.style.paddingRight = '';
   }, 300);
 }
 
