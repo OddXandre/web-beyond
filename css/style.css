@@ -364,11 +364,14 @@ img {
 .time-pill svg {
   opacity: 0.5;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 #navTimeText {
   display: block;
   position: relative;
+  z-index: 1;
   height: 1.4em;
   overflow: hidden;
 }
@@ -389,6 +392,8 @@ img {
 
 .time-pill .ctry {
   opacity: 0.55;
+  position: relative;
+  z-index: 1;
   transition: opacity 0.3s var(--ease-soft);
 }
 .time-pill .ctry.hide {

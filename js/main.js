@@ -315,25 +315,33 @@ document.addEventListener('keydown', function (e) {
 ───────────────────────────────────────────── */
 (function initChrome() {
   if (typeof ChromeShader === 'undefined') return;
-  var els = ['themeToggle', 'langToggle'];
+  var els = ['themeToggle', 'langToggle', 'navTime'];
+  var configs = {
+    themeToggle: {
+      round: 0.92, depth: 0.06, rough: 0.35, split: 0.025,
+      scale: 2.5, stretch: 1.2, angle: 30, repeats: 3.5
+    },
+    langToggle: {
+      round: 0.92, depth: 0.06, rough: 0.35, split: 0.025,
+      scale: 2.5, stretch: 1.2, angle: 30, repeats: 3.5
+    },
+    navTime: {
+      round: 10, depth: 0.04, rough: 0.40, split: 0.015,
+      scale: 2.0, stretch: 1.0, angle: 0, repeats: 3.0,
+      gradient: ['#f0f0f0','#999999','#e8e8e8','#666666','#f0f0f0','#aaaaaa','#e0e0e0','#888888']
+    }
+  };
   var instances = [];
   els.forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
-    var inst = new ChromeShader(el, {
-      round: 0.92,
-      depth: 0.06,
-      rough: 0.35,
-      split: 0.025,
-      scale: 2.5,
-      stretch: 1.2,
-      angle: 30,
-      repeats: 3.5,
-      offset: 0,
-      phase: 0,
-      evolve: 0.12,
+    var c = configs[id] || {};
+    var inst = new ChromeShader(el, Object.assign({
+      round: 0.92, depth: 0.06, rough: 0.35, split: 0.025,
+      scale: 2.5, stretch: 1.2, angle: 30, repeats: 3.5,
+      offset: 0, phase: 0, evolve: 0.12,
       gradient: ['#f0f0f0','#888888','#e8e8e8','#555555','#f5f5f5','#999999','#e0e0e0','#777777']
-    });
+    }, c));
     instances.push(inst);
   });
   // limpiar en hot-reload
