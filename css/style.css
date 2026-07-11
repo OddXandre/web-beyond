@@ -152,14 +152,16 @@ img {
   gap: 18px;
   padding: 8px 10px 8px 20px;
   background: var(--color-nav-bg);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
   border-radius: 30px;
-  box-shadow: var(--shadow-nav);
+  box-shadow: var(--shadow-nav),
+              0 0 0 1px var(--color-nav-border),
+              -1px 0 2px -1px rgba(0,122,255,0.08),
+              1px 0 2px -1px rgba(255,45,85,0.08);
   width: max-content;
   transition: background-color 0.35s var(--ease-soft);
-  outline: 1px solid var(--color-nav-border);
-  outline-offset: -1px;
+  isolation: isolate;
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
 }
 .nav::before {
   content: '';
@@ -168,6 +170,23 @@ img {
   border-radius: 30px;
   background: var(--nav-specular);
   pointer-events: none;
+  z-index: 1;
+}
+.nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  filter: url(#liquid);
+  pointer-events: none;
+  z-index: 0;
+}
+.nav > * {
+  position: relative;
+  z-index: 2;
 }
 
 .nav-logo {
