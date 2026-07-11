@@ -309,3 +309,34 @@ function closeBooking() {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeBooking();
 });
+
+/* ─────────────────────────────────────────────
+   CHROME SHADER — botones de vidrio
+───────────────────────────────────────────── */
+(function initChrome() {
+  if (typeof ChromeShader === 'undefined') return;
+  var els = ['themeToggle', 'langToggle'];
+  var instances = [];
+  els.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var inst = new ChromeShader(el, {
+      round: 0.92,
+      depth: 0.06,
+      rough: 0.35,
+      split: 0.025,
+      scale: 2.5,
+      stretch: 1.2,
+      angle: 30,
+      repeats: 3.5,
+      offset: 0,
+      phase: 0,
+      evolve: 0.12,
+      gradient: ['#f0f0f0','#888888','#e8e8e8','#555555','#f5f5f5','#999999','#e0e0e0','#777777']
+    });
+    instances.push(inst);
+  });
+  // limpiar en hot-reload
+  if (window.__chromeInstances) window.__chromeInstances.forEach(function(i) { i.destroy(); });
+  window.__chromeInstances = instances;
+})();
