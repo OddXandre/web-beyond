@@ -58,6 +58,34 @@
     ease: EASE_HERO,
   });
 
+  /* ─── MARQUEE: stagger reveal from center + tiny swing ─── */
+  (function () {
+    var track = document.getElementById('marqueeTrack');
+    var items = track ? track.querySelectorAll('.marquee-item') : [];
+    if (!items.length) return;
+
+    // Pausar scroll infinito hasta que termine la entrada
+    track.style.animationPlayState = 'paused';
+
+    gsap.set(items, { opacity: 0, y: 14, rotate: -2 });
+
+    gsap.to(items, {
+      scrollTrigger: {
+        trigger: '.marquee-section',
+        start: 'top 82%',
+      },
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      duration: 0.65,
+      ease: EASE_SOFT,
+      stagger: { amount: 0.6, from: 'center' },
+      onComplete: function () {
+        track.style.animationPlayState = 'running';
+      },
+    });
+  })();
+
   /* ─── THEME TRANSITION ─── */
   var toggle = document.getElementById('themeToggle');
   if (toggle) {
