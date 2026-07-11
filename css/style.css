@@ -1058,7 +1058,7 @@ a.btn {
 .modal-close {
   position: absolute;
   top: 12px;
-  right: -44px;
+  right: -52px;
   z-index: 1010;
   width: 32px;
   height: 32px;
@@ -1079,8 +1079,8 @@ a.btn {
 }
 
 .modal-close svg {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 .modal-content::-webkit-scrollbar {
