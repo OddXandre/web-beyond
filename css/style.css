@@ -1066,6 +1066,7 @@ a.btn {
   background: var(--color-bg);
   color: var(--color-text);
   font-size: 20px;
+  line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1076,6 +1077,11 @@ a.btn {
 .modal-close:hover {
   opacity: 0.7;
   transform: rotate(90deg);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 /* ─── BOTTOM BLUR ─── */
