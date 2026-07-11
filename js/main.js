@@ -95,14 +95,15 @@
 
   function animateLang(l) {
     var els = document.querySelectorAll('[data-i18n]');
-    gsap.to(els, {
+    var all = Array.from(els).concat([btn]);
+    gsap.to(all, {
       opacity: 0,
       y: 6,
       duration: 0.15,
       ease: 'power2.in',
       onComplete: function () {
         setLang(l);
-        gsap.fromTo(els,
+        gsap.fromTo(all,
           { opacity: 0, y: -6 },
           { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.015 }
         );
