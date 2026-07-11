@@ -83,12 +83,6 @@ html {
   overflow-y: scroll;
   background: var(--color-bg);
 }
-::-webkit-scrollbar {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: transparent;
-}
 
 body {
   font-family: var(--font-sans);
