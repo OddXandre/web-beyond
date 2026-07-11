@@ -9,15 +9,21 @@
   /* ─── MASTER TIMELINE (entrada) ─── */
   var tl = gsap.timeline({ defaults: { ease: EASE }, delay: 0.15 });
 
-  // 1 — Nav bar baja (primero, establece jerarquía)
-  gsap.set('.nav', { y: -48, opacity: 0 });
-  tl.to('.nav', { y: 0, opacity: 1, duration: 1.0 });
+  // 1 — Nav bar baja
+  tl.from('.nav', {
+    y: -48,
+    opacity: 0,
+    duration: 1.0,
+  });
 
-  // 2 — Time pill entra desde la izquierda, solapado con nav
-  gsap.set('.time-pill', { x: -12, y: -18, opacity: 0, scale: 0.95 });
-  tl.to('.time-pill', { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.9,
+  // 2 — Time pill desde la izquierda
+  tl.from('.time-pill', {
+    x: -12,
+    y: -18,
+    opacity: 0,
+    scale: 0.95,
+    duration: 0.9,
     onComplete: function() {
-      gsap.set('.time-pill', { clearProps: 'transform,opacity' });
       document.querySelector('.time-pill').classList.add('pill-ready');
     }
   }, '-=0.75');
