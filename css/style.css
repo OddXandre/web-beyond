@@ -90,8 +90,7 @@ body {
   background: var(--color-bg);
   line-height: 1.5;
   overflow-x: hidden;
-  transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft),
-              opacity 0.2s ease;
+  transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft);
 }
 
 body.is-translating {
@@ -160,8 +159,9 @@ img {
   width: max-content;
   transition: background-color 0.35s var(--ease-soft);
   isolation: isolate;
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
+  will-change: transform;
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
 }
 .nav::before {
   content: '';
@@ -245,8 +245,9 @@ img {
   height: 44px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
+  will-change: transform;
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
   color: var(--color-text);
   border-radius: 50%;
   cursor: pointer;
@@ -299,8 +300,9 @@ img {
   height: 44px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
+  will-change: transform;
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
   color: var(--color-text);
   border-radius: 50%;
   cursor: pointer;
@@ -335,8 +337,9 @@ img {
   padding: 0 16px;
   border: 1px solid var(--color-nav-border);
   background: var(--color-nav-bg);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
+  will-change: transform;
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
   color: var(--color-text-muted);
   border-radius: 30px;
   display: flex;
@@ -612,6 +615,7 @@ a.btn {
   display: flex;
   gap: 14px;
   width: max-content;
+  will-change: transform;
   animation: marqueeScroll 28s linear infinite;
 }
 
@@ -635,6 +639,7 @@ a.btn {
   overflow: hidden;
   border: 1px solid var(--color-border);
   cursor: default;
+  contain: paint layout style;
   transition: transform 0.5s var(--ease-out);
 }
 
