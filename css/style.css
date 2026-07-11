@@ -251,6 +251,8 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-nav);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
   transition: transform 0.5s var(--ease-out),
                background-color 0.5s var(--ease-soft),
                border-color 0.5s var(--ease-soft);
@@ -305,6 +307,8 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-nav);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
@@ -340,6 +344,8 @@ img {
   align-items: center;
   gap: 7px;
   box-shadow: var(--shadow-nav);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
   overflow: hidden;
   box-sizing: border-box;
   font-family: var(--font-sans);
