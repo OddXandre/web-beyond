@@ -997,12 +997,40 @@ a.btn {
 
 .modal-overlay.active {
   display: flex;
-  animation: modalIn 0.3s var(--ease-out);
+  animation: modalIn 0.35s var(--ease-out);
+}
+
+.modal-overlay.active .modal-content {
+  animation: modalContentIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.modal-overlay.closing {
+  display: flex;
+  animation: modalOut 0.25s var(--ease-soft) forwards;
+}
+
+.modal-overlay.closing .modal-content {
+  animation: modalContentOut 0.25s var(--ease-soft) forwards;
+}
+
+@keyframes modalOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalContentOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.97) translateY(8px); }
 }
 
 @keyframes modalIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes modalContentIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .modal-content {

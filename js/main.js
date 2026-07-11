@@ -312,12 +312,16 @@ function openBooking() {
 function closeBooking() {
   var modal = document.getElementById('bookingModal');
   if (!modal) return;
+  modal.classList.add('closing');
   modal.classList.remove('active');
-  var scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, scrollY);
+  setTimeout(function () {
+    modal.classList.remove('closing');
+    var scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+  }, 300);
 }
 
 // Cerrar con tecla Escape
