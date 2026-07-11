@@ -307,6 +307,9 @@ function openBooking() {
   document.body.style.position = 'fixed';
   document.body.style.top = '-' + scrollY + 'px';
   document.body.style.width = '100%';
+  var scrollbar = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.overflowY = 'hidden';
+  document.documentElement.style.paddingRight = scrollbar + 'px';
 }
 
 function closeBooking() {
@@ -320,6 +323,8 @@ function closeBooking() {
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
+    document.documentElement.style.overflowY = '';
+    document.documentElement.style.paddingRight = '';
     window.scrollTo(0, scrollY);
   }, 300);
 }
