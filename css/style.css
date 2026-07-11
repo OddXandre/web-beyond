@@ -80,7 +80,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
-  overflow-y: scroll;
+  scrollbar-gutter: stable;
   background: var(--color-bg);
 }
 
