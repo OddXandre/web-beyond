@@ -67,6 +67,7 @@
 
   var lang = 'es';
   var btn = document.getElementById('langToggle');
+  var btnText = document.getElementById('langToggleText');
   if (!btn) return;
 
   // restore saved
@@ -89,13 +90,13 @@
     var og = document.querySelector('meta[property="og:description"]');
     if (og && t.desc) og.setAttribute('content', t.desc);
     document.documentElement.setAttribute('lang', l);
-    btn.textContent = l === 'es' ? 'ES' : 'EN';
+    if (btnText) btnText.textContent = l === 'es' ? 'ES' : 'EN';
     try { localStorage.setItem('beyond-lang', l); } catch (e) {}
   }
 
   function animateLang(l) {
     var els = document.querySelectorAll('[data-i18n]');
-    var all = Array.from(els).concat([btn]);
+    var all = Array.from(els).concat([btnText]);
     gsap.to(all, {
       opacity: 0,
       y: 6,
