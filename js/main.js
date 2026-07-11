@@ -97,15 +97,15 @@
     var els = document.querySelectorAll('[data-i18n]');
     gsap.to(els, {
       opacity: 0,
-      duration: 0.08,
-      ease: 'none',
+      y: 6,
+      duration: 0.15,
+      ease: 'power2.in',
       onComplete: function () {
         setLang(l);
-        gsap.to(els, {
-          opacity: 1,
-          duration: 0.08,
-          ease: 'none'
-        });
+        gsap.fromTo(els,
+          { opacity: 0, y: -6 },
+          { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.015 }
+        );
       }
     });
   }
