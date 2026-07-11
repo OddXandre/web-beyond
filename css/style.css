@@ -966,12 +966,6 @@ a.btn {
   .marquee-track {
     animation-duration: 22s;
   }
-  .modal-content {
-    width: 78%;
-    height: 80%;
-    border-radius: 14px;
-    max-height: 90vh;
-  }
   .modal-close {
     top: 8px;
     right: 8px;
@@ -1100,4 +1094,20 @@ a.btn {
 @keyframes glassIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 78% !important;
+    height: 80%;
+    border-radius: 14px;
+    max-height: 90vh;
+  }
+  .modal-close {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
 }
