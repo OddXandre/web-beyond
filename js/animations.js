@@ -3,40 +3,22 @@
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
 
-  var EASE_UI = 'expo.out';
   var EASE_HERO = 'power4.out';
   var EASE_SOFT = 'power2.out';
 
   /* ─── MASTER TIMELINE ─── */
   var tl = gsap.timeline({ delay: 0.1 });
 
-  // 1 — Glass elements: solo opacity (backdrop-filter + transform = jank)
-  tl.from('.nav', { opacity: 0, duration: 0.7, ease: EASE_UI });
-
-  tl.from('.time-pill', {
-    opacity: 0,
-    duration: 0.7,
-    ease: EASE_UI,
-    onComplete: function () {
-      var el = document.querySelector('.time-pill');
-      if (el) el.classList.add('pill-ready');
-    },
-  }, '-=0.5');
-
-  tl.from('.theme-toggle', { opacity: 0, duration: 0.5, ease: EASE_UI }, '-=0.45');
-
-  tl.from('.lang-toggle', { opacity: 0, duration: 0.5, ease: EASE_UI }, '-=0.32');
-
-  // 2 — Nav children: estos SÍ pueden moverse (no tienen backdrop-filter)
+  // 1 — Nav children escalonados (sin backdrop-filter, pueden moverse)
   tl.from('.nav-logo, .nav-socials, .nav-actions', {
     y: -8,
     opacity: 0,
-    duration: 0.4,
+    duration: 0.45,
     stagger: 0.05,
     ease: EASE_SOFT,
-  }, '-=0.55');
+  });
 
-  // 3 — Hero reveal (sin backdrop-filter, full transform)
+  // 2 — Hero logo
   tl.from('.intro-heading .line-inner', {
     yPercent: 130,
     opacity: 0,
@@ -45,7 +27,7 @@
     ease: EASE_HERO,
   }, '-=0.15');
 
-  // 4 — Subtítulo
+  // 3 — Subtítulo
   tl.from('.intro-sub', {
     y: 28,
     opacity: 0,
@@ -53,7 +35,7 @@
     ease: EASE_SOFT,
   }, '-=0.6');
 
-  // 5 — Botones
+  // 4 — Botones
   tl.from('.intro-actions .btn', {
     y: 24,
     opacity: 0,
@@ -63,12 +45,12 @@
     ease: EASE_SOFT,
   }, '-=0.4');
 
-  // 6 — Marquee
+  // 5 — Marquee
   tl.from('.marquee-section', {
     y: 24,
     opacity: 0,
     duration: 1.0,
-    ease: EASE_UI,
+    ease: 'expo.out',
   }, 1.3);
 
   /* ─── WORKFLOW: reveal en scroll ─── */
