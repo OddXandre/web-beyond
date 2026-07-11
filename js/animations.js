@@ -3,77 +3,99 @@
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
 
-  var EASE = 'power4.out';
-  var EASE_SMOOTH = 'power3.out';
+  var EASE_UI = 'expo.out';
+  var EASE_HERO = 'power4.out';
+  var EASE_SOFT = 'power2.out';
 
-  /* ─── MASTER TIMELINE (entrada) ─── */
-  var tl = gsap.timeline({ defaults: { ease: EASE }, delay: 0.15 });
+  /* ─── MASTER TIMELINE ─── */
+  var tl = gsap.timeline({ delay: 0.1 });
 
-  // 1 — Nav bar baja
+  // 1 — NAV cae con autoridad
   tl.from('.nav', {
     y: -48,
     opacity: 0,
-    duration: 1.0,
+    duration: 0.9,
+    ease: EASE_UI,
   });
 
-  // 2 — Time pill desde la izquierda
+  // 2 — Contexto: pill desde izquierda, toggles desde derecha
   tl.from('.time-pill', {
-    x: -12,
-    y: -18,
+    x: -14,
+    y: -12,
     opacity: 0,
-    scale: 0.95,
-    duration: 0.9,
-    onComplete: function() {
-      document.querySelector('.time-pill').classList.add('pill-ready');
-    }
-  }, '-=0.75');
+    scale: 0.93,
+    duration: 0.8,
+    ease: EASE_UI,
+    onComplete: function () {
+      var el = document.querySelector('.time-pill');
+      if (el) el.classList.add('pill-ready');
+    },
+  }, '-=0.68');
 
-  // 3 — Elementos internos de la nav aparecen escalonados
+  tl.from('.theme-toggle', {
+    scale: 0.85,
+    opacity: 0,
+    duration: 0.6,
+    ease: 'back.out(1.1)',
+  }, '-=0.62');
+
+  tl.from('.lang-toggle', {
+    scale: 0.85,
+    opacity: 0,
+    duration: 0.6,
+    ease: 'back.out(1.1)',
+  }, '-=0.48');
+
+  // 3 — Detalles de la nav escalonados
   tl.from('.nav-logo, .nav-socials, .nav-actions', {
-    y: -10,
+    y: -8,
     opacity: 0,
-    duration: 0.55,
-    stagger: 0.06,
-  }, '-=0.45');
+    duration: 0.4,
+    stagger: 0.05,
+    ease: EASE_SOFT,
+  }, '-=0.3');
 
-  // 4 — Logo hero se revela (slide-up + scale suave)
+  // 4 — HERO: el gran momento. Slow, dramatic, desde abajo.
   tl.from('.intro-heading .line-inner', {
-    yPercent: 120,
+    yPercent: 130,
     opacity: 0,
-    scale: 0.92,
-    duration: 1.3,
-  }, '-=0.35');
+    scale: 0.85,
+    duration: 1.4,
+    ease: EASE_HERO,
+  }, '-=0.15');
 
-  // 5 — Subtítulo sube
+  // 5 — Subtítulo entra mientras el hero aún se revela
   tl.from('.intro-sub', {
-    y: 24,
+    y: 28,
     opacity: 0,
     duration: 0.9,
-  }, '-=0.55');
+    ease: EASE_SOFT,
+  }, '-=0.6');
 
-  // 6 — Botones escalonan con micro-scale
+  // 6 — Botones con micro-scale, escalonados
   tl.from('.intro-actions .btn', {
     y: 24,
     opacity: 0,
-    scale: 0.96,
+    scale: 0.95,
     duration: 0.75,
-    stagger: 0.12,
+    stagger: 0.1,
+    ease: EASE_SOFT,
   }, '-=0.4');
 
-  /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
+  /* ─── WORKFLOW: reveal en scroll ─── */
   gsap.from('.workflow-card', {
     scrollTrigger: {
       trigger: '.workflow-horizontal',
-      start: 'top 80%',
+      start: 'top 78%',
     },
     y: 40,
     opacity: 0,
     duration: 0.9,
-    stagger: 0.12,
-    ease: EASE,
+    stagger: 0.1,
+    ease: EASE_HERO,
   });
 
-  /* ─── THEME TRANSITION POLISH ─── */
+  /* ─── THEME TRANSITION ─── */
   var toggle = document.getElementById('themeToggle');
   if (toggle) {
     toggle.addEventListener('click', function () {
@@ -99,8 +121,8 @@
     y: 24,
     opacity: 0,
     duration: 0.8,
-    stagger: 0.15,
-    ease: EASE,
+    stagger: 0.12,
+    ease: EASE_HERO,
   });
 
   gsap.from('.footer-base', {
@@ -111,6 +133,6 @@
     y: 16,
     opacity: 0,
     duration: 0.6,
-    ease: EASE_SMOOTH,
+    ease: EASE_SOFT,
   });
 })();
