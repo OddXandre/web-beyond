@@ -9,31 +9,53 @@
   /* ─── MASTER TIMELINE (entrada) ─── */
   var tl = gsap.timeline({ defaults: { ease: EASE }, delay: 0.15 });
 
+  // 1 — Time pill entra desde arriba-izquierda
+  tl.from('.time-pill', {
+    x: -12,
+    y: -18,
+    opacity: 0,
+    scale: 0.95,
+    duration: 0.9,
+  });
+
+  // 2 — Nav bar baja
   tl.from('.nav', {
     y: -48,
     opacity: 0,
-    duration: 1.2,
-  });
+    duration: 1.0,
+  }, '-=0.65');
 
+  // 3 — Elementos internos de la nav aparecen escalonados
+  tl.from('.nav-logo, .nav-socials, .nav-actions', {
+    y: -10,
+    opacity: 0,
+    duration: 0.55,
+    stagger: 0.06,
+  }, '-=0.45');
+
+  // 4 — Logo hero se revela (slide-up + scale suave)
   tl.from('.intro-heading .line-inner', {
     yPercent: 120,
     opacity: 0,
+    scale: 0.92,
     duration: 1.3,
-    ease: 'power4.out',
-  }, '-=0.4');
+  }, '-=0.35');
 
+  // 5 — Subtítulo sube
   tl.from('.intro-sub', {
-    y: 20,
+    y: 24,
     opacity: 0,
     duration: 0.9,
   }, '-=0.55');
 
+  // 6 — Botones escalonan con micro-scale
   tl.from('.intro-actions .btn', {
     y: 24,
     opacity: 0,
-    duration: 0.7,
-    stagger: 0.15,
-  }, '-=0.35');
+    scale: 0.96,
+    duration: 0.75,
+    stagger: 0.12,
+  }, '-=0.4');
 
   /* ─── WORKFLOW CARDS: REVEAL ON SCROLL ─── */
   gsap.from('.workflow-card', {
