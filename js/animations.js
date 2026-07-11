@@ -9,21 +9,21 @@
   /* ─── MASTER TIMELINE (entrada) ─── */
   var tl = gsap.timeline({ defaults: { ease: EASE }, delay: 0.15 });
 
-  // 1 — Time pill entra desde arriba-izquierda
+  // 1 — Nav bar baja (primero, establece jerarquía)
+  tl.from('.nav', {
+    y: -48,
+    opacity: 0,
+    duration: 1.0,
+  });
+
+  // 2 — Time pill entra desde la izquierda, solapado con nav
   tl.from('.time-pill', {
     x: -12,
     y: -18,
     opacity: 0,
     scale: 0.95,
     duration: 0.9,
-  });
-
-  // 2 — Nav bar baja
-  tl.from('.nav', {
-    y: -48,
-    opacity: 0,
-    duration: 1.0,
-  }, '-=0.65');
+  }, '-=0.75');
 
   // 3 — Elementos internos de la nav aparecen escalonados
   tl.from('.nav-logo, .nav-socials, .nav-actions', {
