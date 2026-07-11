@@ -1056,16 +1056,16 @@ a.btn {
 
 .modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 10;
-  width: 36px;
-  height: 36px;
+  top: 20px;
+  right: 20px;
+  z-index: 1010;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
   color: var(--color-text);
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -1076,7 +1076,7 @@ a.btn {
 
 .modal-close:hover {
   opacity: 0.7;
-  transform: rotate(90deg);
+  transform: scale(1.1);
 }
 
 .modal-content::-webkit-scrollbar {
@@ -1115,5 +1115,6 @@ a.btn {
     width: 32px;
     height: 32px;
     font-size: 18px;
+    z-index: 1010;
   }
 }

@@ -29,8 +29,8 @@
 
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal" onclick="if(event.target===this)closeBooking()">
+    <button class="modal-close" onclick="closeBooking()" aria-label="Cerrar">&times;</button>
     <div class="modal-content">
-      <button class="modal-close" onclick="closeBooking()" aria-label="Cerrar">&times;</button>
       <div class="modal-iframe-wrap">
         <iframe src="https://cal.com/wearebeyond/descubrimiento" width="100%" height="100%" frameborder="0" title="Agendar llamada"></iframe>
       </div>
