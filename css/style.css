@@ -355,11 +355,11 @@ img {
   letter-spacing: -0.01em;
   white-space: nowrap;
   width: fit-content;
-  transition: width 0.45s var(--ease-soft);
+  transition: width 0.45s var(--ease-soft), transform 0.4s var(--ease-out);
 }
 
 .time-pill:hover {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 .time-pill svg {
