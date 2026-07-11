@@ -67,7 +67,7 @@
     // Pausar scroll infinito hasta que termine la entrada
     track.style.animationPlayState = 'paused';
 
-    gsap.set(items, { opacity: 0, y: 14, rotate: -2 });
+    gsap.set(items, { opacity: 0, y: 14 });
 
     gsap.to(items, {
       scrollTrigger: {
@@ -76,10 +76,9 @@
       },
       opacity: 1,
       y: 0,
-      rotate: 0,
       duration: 0.65,
       ease: EASE_SOFT,
-      stagger: { amount: 0.6, from: 'center' },
+      stagger: { amount: 0.6, from: 'start' },
       onComplete: function () {
         track.style.animationPlayState = 'running';
       },
