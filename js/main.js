@@ -227,11 +227,19 @@ if (cc) {
 
   var ticking = true;
   function tick() {
-    if (!ticking) return;
+    if (!ticking || document.hidden) return;
     setTime(formatTime(new Date(), use24h), false);
   }
   tick();
-  setInterval(tick, 1000);
+  var tickInterval = setInterval(tick, 1000);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      clearInterval(tickInterval);
+    } else {
+      tick();
+      tickInterval = setInterval(tick, 1000);
+    }
+  });
 })();
 
 /* ─────────────────────────────────────────────

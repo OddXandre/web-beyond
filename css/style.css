@@ -156,8 +156,8 @@ img {
   width: max-content;
   isolation: isolate;
   transition: background-color 0.35s var(--ease-soft);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
   opacity: 0;
   animation: glassIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s forwards;
 }
@@ -178,7 +178,6 @@ img {
   background:
     radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
     radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
-  filter: url(#liquid);
   pointer-events: none;
   z-index: 0;
 }
@@ -624,6 +623,7 @@ a.btn {
   overflow: hidden;
   border: 1px solid var(--color-border);
   cursor: default;
+  contain: content;
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -721,6 +721,8 @@ a.btn {
   margin-top: 120px;
   border-top: 1px solid var(--color-border);
   transition: border-color 0.35s var(--ease-soft);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 
 .footer-inner {
