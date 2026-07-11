@@ -1098,7 +1098,7 @@ a.btn {
 
 @media (max-width: 768px) {
   .modal-content {
-    width: 78% !important;
+    width: 90% !important;
     height: 80%;
     border-radius: 14px;
     max-height: 90vh;
