@@ -693,7 +693,6 @@ a.btn {
                border-color 0.5s var(--ease-soft),
                background-color 0.5s var(--ease-soft),
                height 0.45s var(--ease-soft);
-  overflow: hidden;
 }
 
 .workflow-card:hover {
