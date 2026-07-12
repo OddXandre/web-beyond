@@ -122,14 +122,12 @@
         }
         wfCards.forEach(function (c, i) {
           var newH = c.scrollHeight;
-          c.style.height = oldH[i] + 'px';
-          c.style.overflow = 'hidden';
-          void c.offsetHeight;
-          c.style.height = newH + 'px';
-          setTimeout(function () {
-            c.style.height = '';
-            c.style.overflow = '';
-          }, 500);
+          gsap.fromTo(c,
+            { height: oldH[i], overflow: 'hidden' },
+            { height: newH, duration: 0.45, ease: 'power2.out',
+              onComplete: function () { gsap.set(c, { height: '', overflow: '' }); }
+            }
+          );
         });
         gsap.fromTo(Array.from(els).concat([btnText]),
           { opacity: 0, y: -6 },
