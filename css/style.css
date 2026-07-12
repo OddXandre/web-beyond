@@ -691,8 +691,7 @@ a.btn {
   transition: transform 0.5s var(--ease-out),
                box-shadow 0.5s var(--ease-soft),
                border-color 0.5s var(--ease-soft),
-               background-color 0.5s var(--ease-soft),
-               height 0.45s var(--ease-soft);
+               background-color 0.5s var(--ease-soft);
 }
 
 .workflow-card:hover {

@@ -98,9 +98,6 @@
     var els = document.querySelectorAll('[data-i18n]');
     var navBtn = document.querySelector('.nav .btn-dark');
     var oldBtnW = navBtn ? navBtn.offsetWidth : 0;
-    var wfCards = document.querySelectorAll('.workflow-card');
-    var oldH = [];
-    wfCards.forEach(function (c) { oldH.push(c.scrollHeight); });
 
     gsap.to(Array.from(els).concat([btnText]), {
       opacity: 0,
@@ -120,15 +117,6 @@
           navBtn.style.width = newBtnW + 'px';
           setTimeout(function () { navBtn.style.width = ''; }, 500);
         }
-        wfCards.forEach(function (c, i) {
-          var newH = c.scrollHeight;
-          gsap.fromTo(c,
-            { height: oldH[i], overflow: 'hidden' },
-            { height: newH, duration: 0.45, ease: 'power2.out',
-              onComplete: function () { gsap.set(c, { height: '', overflow: '' }); }
-            }
-          );
-        });
         gsap.fromTo(Array.from(els).concat([btnText]),
           { opacity: 0, y: -6 },
           { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.015 }
