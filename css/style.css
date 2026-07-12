@@ -484,6 +484,10 @@ a.btn {
   color: var(--color-on-accent);
   position: relative;
   overflow: hidden;
+  width: fit-content;
+  transition: transform 0.4s var(--ease-out),
+               box-shadow 0.5s var(--ease-soft),
+               width 0.45s var(--ease-soft);
 }
 
 .btn-dark:hover {
