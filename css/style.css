@@ -715,6 +715,7 @@ a.btn {
   color: var(--color-text);
   width: fit-content;
   transition: width 0.45s var(--ease-soft);
+  align-self: flex-start;
 }
 
 .workflow-card p {
