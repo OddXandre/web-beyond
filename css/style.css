@@ -713,6 +713,8 @@ a.btn {
   font-size: 22px;
   letter-spacing: -0.04em;
   color: var(--color-text);
+  width: fit-content;
+  transition: width 0.45s var(--ease-soft);
 }
 
 .workflow-card p {

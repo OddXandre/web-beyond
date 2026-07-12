@@ -98,6 +98,9 @@
     var els = document.querySelectorAll('[data-i18n]');
     var navBtn = document.querySelector('.nav .btn-dark');
     var oldBtnW = navBtn ? navBtn.offsetWidth : 0;
+    var wfH3s = document.querySelectorAll('.workflow-card h3[data-i18n]');
+    var oldH3W = [];
+    wfH3s.forEach(function (h) { oldH3W.push(h.offsetWidth); });
 
     gsap.to(Array.from(els).concat([btnText]), {
       opacity: 0,
@@ -117,6 +120,17 @@
           navBtn.style.width = newBtnW + 'px';
           setTimeout(function () { navBtn.style.width = ''; }, 500);
         }
+        wfH3s.forEach(function (h, i) {
+          var clone = h.cloneNode(true);
+          clone.style.cssText = 'position:fixed;visibility:hidden;width:auto;white-space:nowrap;';
+          h.parentNode.appendChild(clone);
+          var newW = clone.offsetWidth;
+          clone.parentNode.removeChild(clone);
+          h.style.width = oldH3W[i] + 'px';
+          void h.offsetWidth;
+          h.style.width = newW + 'px';
+          setTimeout(function () { h.style.width = ''; }, 500);
+        });
         gsap.fromTo(Array.from(els).concat([btnText]),
           { opacity: 0, y: -6 },
           { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.015 }
