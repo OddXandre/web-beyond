@@ -96,15 +96,28 @@
 
   function animateLang(l) {
     var els = document.querySelectorAll('[data-i18n]');
-    var all = Array.from(els).concat([btnText]);
-    gsap.to(all, {
+    var navBtn = document.querySelector('.nav .btn-dark');
+    var oldBtnW = navBtn ? navBtn.offsetWidth : 0;
+
+    gsap.to(Array.from(els).concat([btnText]), {
       opacity: 0,
       y: 6,
       duration: 0.15,
       ease: 'power2.in',
       onComplete: function () {
         setLang(l);
-        gsap.fromTo(all,
+        if (navBtn) {
+          var clone = navBtn.cloneNode(true);
+          clone.style.cssText = 'position:fixed;visibility:hidden;width:auto;';
+          navBtn.parentNode.appendChild(clone);
+          var newBtnW = clone.offsetWidth;
+          clone.parentNode.removeChild(clone);
+          navBtn.style.width = oldBtnW + 'px';
+          void navBtn.offsetWidth;
+          navBtn.style.width = newBtnW + 'px';
+          setTimeout(function () { navBtn.style.width = ''; }, 500);
+        }
+        gsap.fromTo(Array.from(els).concat([btnText]),
           { opacity: 0, y: -6 },
           { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.015 }
         );
