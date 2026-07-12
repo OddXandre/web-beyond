@@ -691,7 +691,9 @@ a.btn {
   transition: transform 0.5s var(--ease-out),
                box-shadow 0.5s var(--ease-soft),
                border-color 0.5s var(--ease-soft),
-               background-color 0.5s var(--ease-soft);
+               background-color 0.5s var(--ease-soft),
+               height 0.45s var(--ease-soft);
+  overflow: hidden;
 }
 
 .workflow-card:hover {
@@ -713,9 +715,6 @@ a.btn {
   font-size: 22px;
   letter-spacing: -0.04em;
   color: var(--color-text);
-  width: fit-content;
-  transition: width 0.45s var(--ease-soft);
-  align-self: flex-start;
 }
 
 .workflow-card p {
