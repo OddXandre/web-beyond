@@ -100,7 +100,7 @@
     var oldBtnW = navBtn ? navBtn.offsetWidth : 0;
     var wfCards = document.querySelectorAll('.workflow-card');
     var oldH = [];
-    wfCards.forEach(function (c) { oldH.push(c.offsetHeight); });
+    wfCards.forEach(function (c) { oldH.push(c.scrollHeight); });
 
     gsap.to(Array.from(els).concat([btnText]), {
       opacity: 0,
@@ -121,15 +121,15 @@
           setTimeout(function () { navBtn.style.width = ''; }, 500);
         }
         wfCards.forEach(function (c, i) {
-          var clone = c.cloneNode(true);
-          clone.style.cssText = 'position:fixed;visibility:hidden;width:' + c.offsetWidth + 'px;';
-          c.parentNode.appendChild(clone);
-          var newH = clone.offsetHeight;
-          clone.parentNode.removeChild(clone);
+          var newH = c.scrollHeight;
           c.style.height = oldH[i] + 'px';
+          c.style.overflow = 'hidden';
           void c.offsetHeight;
           c.style.height = newH + 'px';
-          setTimeout(function () { c.style.height = ''; }, 500);
+          setTimeout(function () {
+            c.style.height = '';
+            c.style.overflow = '';
+          }, 500);
         });
         gsap.fromTo(Array.from(els).concat([btnText]),
           { opacity: 0, y: -6 },
